@@ -18,7 +18,7 @@ export class ExamService {
       title: 'Question1',
       body: 'Body1',
       choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-      correctAnswer: ['1'],
+      correctAnswer: ['Answer1'],
       explanation: 'Explanation1'
     },
       {
@@ -26,7 +26,7 @@ export class ExamService {
         title: 'Question2',
         body: 'Body2',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['1', '2'],
+        correctAnswer: ['Answer1', 'Answer2'],
         explanation: 'Explanation2'
       },
       {
@@ -34,7 +34,7 @@ export class ExamService {
         title: 'Question3',
         body: 'Body3',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['1', '3'],
+        correctAnswer: ['Answer1', 'Answer3'],
         explanation: 'Explanation3'
       },
       {
@@ -42,7 +42,7 @@ export class ExamService {
         title: 'Question4',
         body: 'Body4',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['2'],
+        correctAnswer: ['Answer2'],
         explanation: 'Explanation4'
       },
       {
@@ -50,7 +50,7 @@ export class ExamService {
         title: 'Question5',
         body: 'Body5',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['2', '3'],
+        correctAnswer: ['Answer2', 'Answer3'],
         explanation: 'Explanation5'
       },
       {
@@ -58,7 +58,7 @@ export class ExamService {
         title: 'Question6',
         body: 'Body6',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['1', '4'],
+        correctAnswer: ['Answer1', 'Answer4'],
         explanation: 'Explanation6'
       },
       {
@@ -66,7 +66,7 @@ export class ExamService {
         title: 'Question7',
         body: 'Body7',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['1'],
+        correctAnswer: ['Answer1'],
         explanation: 'Explanation7'
       },
       {
@@ -74,7 +74,7 @@ export class ExamService {
         title: 'Question8',
         body: 'Body8',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['4'],
+        correctAnswer: ['Answer4'],
         explanation: 'Explanation8'
       },
       {
@@ -82,7 +82,7 @@ export class ExamService {
         title: 'Question9',
         body: 'Body9',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['3', '4'],
+        correctAnswer: ['Answer3', 'Answer4'],
         explanation: 'Explanation9'
       },
       {
@@ -90,7 +90,7 @@ export class ExamService {
         title: 'Question10',
         body: 'Body10',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['1', '4'],
+        correctAnswer: ['Answer1', 'Answer4'],
         explanation: 'Explanation10'
       },
       {
@@ -98,7 +98,7 @@ export class ExamService {
         title: 'Question11',
         body: 'Body11',
         choices: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
-        correctAnswer: ['3'],
+        correctAnswer: ['Answer3'],
         explanation: 'Explanation11'
       }];
   }

@@ -7,7 +7,7 @@
       <div>
         <div *ngFor="let choice of choices; let i = index" class="form-check">
           <label>
-            <input class="form-check-input" type="checkbox" value="{{i + 1}}" (change)="onChange($event)" [checked]="isChecked(i + 1)">
+            <input class="form-check-input" type="checkbox" value="{{choice}}" (change)="onChange($event)" [checked]="isChecked(choice)">
             &nbsp;{{choice}}
           </label>
         </div><br>
