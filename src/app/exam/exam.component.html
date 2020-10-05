@@ -1,0 +1,19 @@
+<div class="container">
+  <app-question *ngFor="let question of questions | paginate: { itemsPerPage: 1, currentPage: p }"
+                [id]="question.id"
+                [title]="question.title"
+                [body]="question.body"
+                [choices]="question.choices"
+                [correctAnswer]="question.correctAnswer"
+                [explanation]="question.explanation"
+                [pChanged]="pHasChanged"
+                [checkedAnswers]="checkedAnswers(question.id)"
+                (selectedAnswer)="addAnswer($event, question.id)"
+                class="row" style="margin-top:20px;">
+  </app-question>
+  <div>
+    <button type="button" class="btn btn-primary" style="float: right;margin-top: 15px;margin-right: -10px;" (click)="onSubmit()">Submit</button>
+  </div>
+  <pagination-controls (pageChange)="pageChanged($event)" class="my-pagination" style="float: left;margin-top: 20px;margin-left: -65px;"></pagination-controls>
+  <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
+</div>

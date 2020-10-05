@@ -1,0 +1,21 @@
+<div>
+  <div class="card" style="width: 71rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <!--<h6 class="card-subtitle mb-2 text-muted">{{title}}</h6>-->
+      <p class="card-text">{{body}}</p><br>
+      <div>
+        <div *ngFor="let choice of choices; let i = index" class="form-check">
+          <label>
+            <input class="form-check-input" type="checkbox" value="{{i + 1}}" (change)="onChange($event)" [checked]="isChecked(i + 1)">
+            &nbsp;{{choice}}
+          </label>
+        </div><br>
+      </div><br>
+      <a class="card-link" (click)="showAnswer = !showAnswer">Show answer</a>
+      <a class="card-link" (click)="showExplanation = !showExplanation">Explain now!</a>
+      <br><p class="text-center" *ngIf="showAnswer">Answer = {{correctAnswer}}</p>
+      <br><p class="text-center" *ngIf="showExplanation">Explanation: {{explanation}}</p>
+    </div>
+  </div>
+</div>
