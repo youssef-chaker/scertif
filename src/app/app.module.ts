@@ -1,33 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ExamComponent } from './exam/exam.component';
-import { QuestionComponent } from './question/question.component';
-import {ExamService} from './services/exam.service';
-import {RouterModule, Routes} from '@angular/router';
-import {NgxPaginationModule} from 'ngx-pagination';
-import {HttpClientModule} from '@angular/common/http';
+import { ExamModule } from './modules/exam.module';
 
-const appRoutes: Routes = [
-  { path: 'exam/:exam', component: ExamComponent }
-];
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ExamComponent,
-    QuestionComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    NgxPaginationModule
+    ExamModule
   ],
-  providers: [ExamService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
