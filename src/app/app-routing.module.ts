@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExamComponent } from './exam/exam.component';
 
 const routes: Routes = [
-  { path: 'exam/:exam', component: ExamComponent }
+  { path: 'exam', loadChildren: './modules/exam.module#ExamModule' }
 ];
 
 @NgModule({

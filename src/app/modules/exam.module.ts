@@ -6,6 +6,7 @@ import { ExamService } from '../services/exam.service';
 import { ExamComponent } from '../exam/exam.component';
 import { QuestionComponent } from '../question/question.component';
 import { SharedModule } from './shared.module';
+import { ExamRoutingModule } from './exam-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SharedModule } from './shared.module';
   ],
   imports: [
     NgxPaginationModule,
-    SharedModule
+    SharedModule,
+    ExamRoutingModule
   ],
   providers: [
     ExamService
