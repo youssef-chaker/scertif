@@ -1,14 +1,19 @@
-<div>
-  <div class="card" style="width: 71rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{title}}</h5>
+<div style="width: 100%;">
+  <div class="card" style="overflow: hidden;">
+    <div class="ellipse-style">
+      <div class="question-title-style">{{body}}</div>
+    </div>
+    <div class="question-num-style">29</div>
+    <div class="card-body" style="margin-top: 2.2em;">
+      <!--<h5 class="card-title">{{title}}</h5>-->
       <!--<h6 class="card-subtitle mb-2 text-muted">{{title}}</h6>-->
-      <p class="card-text">{{body}}</p><br>
-      <div>
-        <div *ngFor="let choice of choices; let i = index" class="form-check">
-          <label>
+
+      <div id="choices-container">
+        <div *ngFor="let choice of choices; let i = index" class="form-check choice-input-style">
+          <!--<span></span>-->
+          <label class="text-input-style">
             <input class="form-check-input" type="checkbox" value="{{choice}}" (change)="onChange($event)" [checked]="isChecked(choice)">
-            &nbsp;{{choice}}
+            {{choice}}
           </label>
         </div><br>
       </div><br>

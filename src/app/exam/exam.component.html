@@ -9,11 +9,11 @@
                 [pChanged]="pHasChanged"
                 [checkedAnswers]="checkedAnswers(question.id)"
                 (selectedAnswer)="addAnswer($event, question.id)"
-                class="row" style="margin-top:20px;">
+                class="row" style="margin-top:3em;">
   </app-question>
   <div>
     <button type="button" class="btn btn-primary" style="float: right;margin-top: 15px;margin-right: -10px;" (click)="onSubmit()">Submit</button>
   </div>
-  <pagination-controls (pageChange)="pageChanged($event)" class="my-pagination" style="float: left;margin-top: 20px;margin-left: -65px;"></pagination-controls>
+  <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers" style="float: left;margin-top: 20px;margin-left: -65px;"></pagination-controls>
   <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 </div>

@@ -1,3 +1,7 @@
-.my-pagination /deep/ .ngx-pagination .current {
+/* .my-pagination /deep/ .ngx-pagination .current {
   /* background: red; */
+
+.hide-page-numbers /deep/ .ngx-pagination li:not(.pagination-previous):not(.pagination-next) {
+  display: none;
 }
+
