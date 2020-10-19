@@ -1,5 +1,7 @@
 # Scertif (Successfully Certified)
 
+![](https://gitlab.com/uploads/-/system/project/avatar/21521728/output-onlinepngtools.png?width=100)
+
 Ce projet consiste à faciliter le test des acquis après l'étude du matériel éducatif d’une certification sous forme des anciens qcm proposés dans les tests de ces certifications.
 cet plateforme permet au utilisateur de raffiner leur connaissance et avoir confiance avant de passer les examens coûteux `version 1.0.0`
 
