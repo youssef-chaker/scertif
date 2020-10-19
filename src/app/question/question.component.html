@@ -3,18 +3,35 @@
     <div class="ellipse-style">
       <div class="question-title-style">{{body}}</div>
     </div>
-    <div class="question-num-style">29</div>
+    <div class="question-num-style">{{pageNumber}}</div>
     <div class="card-body" style="margin-top: 2.2em;">
       <!--<h5 class="card-title">{{title}}</h5>-->
       <!--<h6 class="card-subtitle mb-2 text-muted">{{title}}</h6>-->
 
       <div id="choices-container">
-        <div *ngFor="let choice of choices; let i = index" class="form-check choice-input-style">
+        <div *ngFor="let choice of choices; let i = index"
+             [ngClass]="{
+             'form-check choice-input-style-selected': checkChoice(i + 1),
+             'form-check choice-input-style': !checkChoice(i + 1),
+             'form-check choice-input-style-correct': isCorrect(choice) && submit,
+             'form-check choice-input-style-wrong': !isCorrect(choice) && submit
+             }">
           <!--<span></span>-->
-          <label class="text-input-style">
-            <input class="form-check-input" type="checkbox" value="{{choice}}" (change)="onChange($event)" [checked]="isChecked(choice)">
-            {{choice}}
-          </label>
+          <div>
+            <label class="input-label">
+              <input class="form-check-input input-checkbox-style"
+                     type="checkbox" value="{{choice}}"
+                     (change)="onChange($event, i + 1)"
+                     [checked]="isChecked(choice)"
+                     (click)="choiceSelected(choice, i + 1)">
+            </label>
+            <label [ngClass]="{
+             'text-input-style-selected': checkChoice(i + 1),
+             'text-input-style': !checkChoice(i + 1)
+             }">
+              {{choice}}
+            </label>
+          </div>
         </div><br>
       </div><br>
       <a class="card-link" (click)="showAnswer = !showAnswer">Show answer</a>

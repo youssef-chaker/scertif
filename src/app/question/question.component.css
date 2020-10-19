@@ -31,8 +31,36 @@
 .choice-input-style {
   border: 1px solid;
   border-radius: 10px;
-  padding: 0.75em 4px 0 2em;
+  padding-left: 2em;
   margin-top: 1em;
+  padding-top: 0.75em;
+}
+
+.choice-input-style-selected {
+  border: 1px solid;
+  border-radius: 10px;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: #4755D4;
+}
+
+.choice-input-style-correct {
+  border: 1px solid;
+  border-radius: 10px;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: limegreen;
+}
+
+.choice-input-style-wrong {
+  border: 1px solid;
+  border-radius: 10px;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: red;
 }
 
 #choices-container {
@@ -43,7 +71,39 @@
 .text-input-style {
   font-size: 1.1em;
   font-family: 'Roboto', sans-serif;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
 }
+
+.text-input-style-selected {
+  font-size: 1.1em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  color: white;
+}
+
+.input-label {
+
+}
+
+.input-checkbox-style {
+  margin-top: -0.35rem;
+}
+
+
+/* .input-label {
+  position: relative;
+  border: 20px solid #000;
+  font-size: 1.1em;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 100%;
+  top: 0.5em;
+}
+
+.input-label > input[type=checkbox] {
+  position: absolute; left: -999px;
+} */
 
 /* .text-input-style input {
   position: relative;

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import {ExamService} from '../services/exam.service';
 import {ActivatedRoute} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-exam',
@@ -15,7 +16,9 @@ export class ExamComponent implements OnInit {
   points = [];
   result = 0;
   pHasChanged = new EventEmitter();
+  submitted = new BehaviorSubject(false);
   showResult = false;
+  showSubmit = true;
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute) { }
@@ -53,9 +56,12 @@ export class ExamComponent implements OnInit {
 
   onSubmit(): void {
     this.pHasChanged.emit(true);
+    this.submitted.next(true);
     for (let i = 0 ; i < this.points.length ; i++) {
       const questionAnswers = this.questions[i].correctAnswer.sort();
-      const pointAnswers = this.points[i].answers.sort();
+      const sortedPointAnswers = this.points[i].answers.sort();
+      const pointAnswers = [];
+      sortedPointAnswers.forEach(answer => pointAnswers.push(answer.a));
       if (JSON.stringify(questionAnswers) === JSON.stringify(pointAnswers)) {
         this.correctPoints++;
       }
@@ -63,6 +69,15 @@ export class ExamComponent implements OnInit {
     this.result = (this.correctPoints / this.questions.length) * 100;
     this.showResult = true;
     this.correctPoints = 0;
+    this.showSubmit = !this.showSubmit;
+  }
+
+  onRedo(): void {
+    this.showSubmit = !this.showSubmit;
+    this.p = 1;
+    this.points = [];
+    this.submitted.next(false);
+    this.showResult = false;
   }
 
 }

@@ -15,11 +15,16 @@ export class QuestionComponent implements OnInit {
   @Input() choices;
   @Input() correctAnswer;
   @Input() pChanged;
+  @Input() pageNumber;
   @Input() checkedAnswers;
+  @Input() submitted;
   @Output() selectedAnswer = new EventEmitter();
   answers = [];
   showAnswer = false;
   showExplanation = false;
+  submit = false;
+  nowChecked = [];
+  selectedChoices = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -28,26 +33,47 @@ export class QuestionComponent implements OnInit {
         this.selectedAnswer.emit(this.answers);
       }
     });
+    this.submitted.subscribe(s => this.submit = s);
+    this.pageNumber = typeof (this.pageNumber) === 'undefined' ? 1 : this.pageNumber;
     this.answers = this.checkedAnswers;
+    this.styleCheckedAnswers(this.checkedAnswers);
   }
 
-  onChange(e): void {
-    const answer = e.target.value;
-    if (!this.answers.find(a => a === answer)) {
+  styleCheckedAnswers(answers): void {
+    answers.forEach(answer => {
+      this.selectedChoices.push(answer);
+    });
+  }
+
+  onChange(e, i): void {
+    const a = e.target.value;
+    const answer = {a, i};
+    if (!this.answers.find(ans => ans.a === a)) {
       this.answers.push(answer);
     } else {
-      this.answers.splice(this.answers.indexOf(answer), 1);
+      this.answers.splice(this.answers.findIndex(ans => ans.a === a), 1);
     }
   }
 
-  isChecked(i): boolean {
-    // tslint:disable-next-line:prefer-for-of
-    for (let j = 0 ; j < this.checkedAnswers.length ; j++) {
-      if (this.checkedAnswers[j] === i.toString()) {
-        return true;
-      }
+  choiceSelected(a, i): void {
+    const choice = {a, i};
+    if (this.selectedChoices.find(c => c.a === a)) {
+      this.selectedChoices.splice(this.selectedChoices.findIndex(c => c.i === i), 1);
+    } else {
+      this.selectedChoices.push(choice);
     }
-    return false;
+  }
+
+  isChecked(choice): boolean {
+    return this.checkedAnswers.find(c => c.a === choice);
+  }
+
+  checkChoice(i): boolean {
+    return this.selectedChoices.find(c => c.i === i);
+  }
+
+  isCorrect(choice): boolean {
+    return this.correctAnswer.find(c => c === choice);
   }
 
 }
