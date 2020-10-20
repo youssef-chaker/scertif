@@ -14,9 +14,9 @@
                 class="row" style="margin-top:3em;">
   </app-question>
   <div>
-    <button type="button" class="btn btn-primary" *ngIf="showSubmit" style="float: right;margin-top: 15px;margin-right: -10px;" (click)="onSubmit()">Submit</button>
-    <button type="button" class="btn btn-primary" *ngIf="!showSubmit" style="float: right;margin-top: 15px;margin-right: -10px;" (click)="onRedo()">Re-do</button>
+    <button type="button" class="btn btn-primary finish-redo-style" *ngIf="p === questions.length && showSubmit" (click)="onSubmit()">Finish</button>
+    <button type="button" class="btn btn-primary finish-redo-style" *ngIf="!showSubmit" (click)="onRedo()">Re-do</button>
   </div>
-  <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers" style="float: left;margin-top: 20px;margin-left: -65px;"></pagination-controls>
+  <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position"></pagination-controls>
   <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 </div>

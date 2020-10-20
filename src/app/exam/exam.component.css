@@ -2,6 +2,18 @@
   /* background: red; */
 
 .hide-page-numbers /deep/ .ngx-pagination li:not(.pagination-previous):not(.pagination-next) {
-  display: none;
+  /* display: none; */
+}
+
+.pagination-position {
+  float: left;
+  margin-top: 20px;
+  margin-left: -65px;
+}
+
+.finish-redo-style {
+  float: right;
+  margin-top: 15px;
+  margin-right: -10px;
 }
 

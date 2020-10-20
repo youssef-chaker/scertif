@@ -57,15 +57,18 @@ export class ExamComponent implements OnInit {
   onSubmit(): void {
     this.pHasChanged.emit(true);
     this.submitted.next(true);
-    for (let i = 0 ; i < this.points.length ; i++) {
-      const questionAnswers = this.questions[i].correctAnswer.sort();
-      const sortedPointAnswers = this.points[i].answers.sort();
-      const pointAnswers = [];
-      sortedPointAnswers.forEach(answer => pointAnswers.push(answer.a));
-      if (JSON.stringify(questionAnswers) === JSON.stringify(pointAnswers)) {
-        this.correctPoints++;
-      }
-    }
+    this.points.forEach(p => {
+        let questionAnswers = this.questions.find(q => q.id === p.id);
+        if (questionAnswers) {
+          questionAnswers = questionAnswers.correctAnswer.sort();
+          const sortedPointAnswers = p.answers.sort();
+          const pointAnswers = [];
+          sortedPointAnswers.forEach(answer => pointAnswers.push(answer.a));
+          if (JSON.stringify(questionAnswers) === JSON.stringify(pointAnswers)) {
+            this.correctPoints++;
+          }
+        }
+      });
     this.result = (this.correctPoints / this.questions.length) * 100;
     this.showResult = true;
     this.correctPoints = 0;
