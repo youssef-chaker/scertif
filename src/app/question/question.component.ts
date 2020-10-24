@@ -23,6 +23,7 @@ export class QuestionComponent implements OnInit {
   showAnswer = false;
   showExplanation = false;
   submit = false;
+  timerText;
   nowChecked = [];
   selectedChoices = [];
   constructor() { }

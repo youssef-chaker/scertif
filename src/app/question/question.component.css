@@ -95,6 +95,46 @@
   margin-top: -0.35rem;
 }
 
+.ext-row {
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
+.ext-col {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.ext-btn {
+  display: table;
+  margin: auto;
+}
+
+.correct-answer-style {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+
+.explanation-style {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  border: 1px solid #343a40;
+  color: #343a40;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
 
 /* .input-label {
   position: relative;

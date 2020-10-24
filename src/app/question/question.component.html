@@ -35,10 +35,16 @@
           </div>
         </div><br>
       </div><br>
-      <a class="card-link" (click)="showAnswer = !showAnswer">Show answer</a>
-      <a class="card-link" (click)="showExplanation = !showExplanation">Explain now!</a>
-      <br><p class="text-center" *ngIf="showAnswer">Answer = {{correctAnswer}}</p>
-      <br><p class="text-center" *ngIf="showExplanation">Explanation: {{explanation}}</p>
+      <div class="row ext-row">
+        <div class="col ext-col">
+          <button type="button" class="card-link btn btn-outline-primary ext-btn" (click)="showAnswer = !showAnswer">Show answer</button>
+          <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswer}}</span>
+        </div>
+        <div class="col ext-col">
+          <button type="button" class="card-link btn btn-outline-dark ext-btn" (click)="showExplanation = !showExplanation">&nbsp;&nbsp;Explanation&nbsp;</button>
+          <span class="text-center explanation-style" *ngIf="showExplanation">{{explanation}}</span>
+        </div>
+      </div><br>
     </div>
   </div>
 </div>

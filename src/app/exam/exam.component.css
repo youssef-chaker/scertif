@@ -8,12 +8,48 @@
 .pagination-position {
   float: left;
   margin-top: 20px;
-  margin-left: -65px;
 }
 
-.finish-redo-style {
+#finish-redo-style {
+  display: table;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#timer-input {
   float: right;
-  margin-top: 15px;
-  margin-right: -10px;
+  width: 21%;
+  margin-top: 0.95em;
+  margin-right: 16em;
 }
 
+#timer-style {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.95em;
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+
+.set-cancel-timer-style {
+  margin-top: 0.99rem;
+  margin-left: 1rem;
+}
+
+.ext-col-sm {
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+}
+
+.btn-timer {
+  margin-right: 0.5em;
+}

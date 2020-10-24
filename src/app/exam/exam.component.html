@@ -13,10 +13,33 @@
                 (selectedAnswer)="addAnswer($event, question.id)"
                 class="row" style="margin-top:3em;">
   </app-question>
-  <div>
-    <button type="button" class="btn btn-primary finish-redo-style" *ngIf="p === questions.length && showSubmit" (click)="onSubmit()">Finish</button>
-    <button type="button" class="btn btn-primary finish-redo-style" *ngIf="!showSubmit" (click)="onRedo()">Re-do</button>
+  <div class="row">
+    <div class="col-sm ext-col-sm">
+      <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position"></pagination-controls>
+    </div>
+    <div class="col-sm ext-col-sm">
+      <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="setTimer()" *ngIf="!showTimer && examStarted">Set timer</button>
+      <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="cancelTimer()" *ngIf="showTimer && examStarted && !startedTimer">Cancel timer</button>
+      <div class="input-group" id="timer-input" *ngIf="showTimer">
+        <input type="text" placeholder="min" class="form-control" *ngIf="!startedTimer" [(ngModel)]="timerMinutes" maxlength="3" aria-label="Minute amount">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-info" *ngIf="!startedTimer" (click)="startTimer()" [disabled]="startedTimer || timerMinutes === undefined || timerMinutes.length <= 0">Start</button>
+          <div *ngIf="startedTimer" class="input-group-append">
+            <button type="button" class="btn btn-info btn-timer" (click)="countdown.pause()" [disabled]="!startedTimer">Pause</button>
+            <button type="button" class="btn btn-info btn-timer" (click)="countdown.resume()" [disabled]="!startedTimer">Resume</button>
+            <button type="button" class="btn btn-info btn-timer" (click)="countdown.restart()" [disabled]="!startedTimer">Restart</button>
+            <button type="button" class="btn btn-info btn-timer" (click)="cancelTimer()" [disabled]="!startedTimer">Stop</button>
+          </div>
+        </div>
+      </div>
+      <countdown *ngIf="startedTimer" id="timer-style" #cd [config]="timerConfig" (event)="handleTimer($event)"></countdown>
+    </div>
+    <div class="col-1 ext-col-sm">
+      <div id="finish-redo-style">
+        <button type="button" class="btn btn-primary" *ngIf="p === questions.length && showSubmit" (click)="onSubmit()">Finish</button>
+        <button type="button" class="btn btn-primary" *ngIf="!showSubmit" (click)="onRedo()">Re-do</button>
+      </div>
+    </div>
   </div>
-  <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position"></pagination-controls>
   <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 </div>
