@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_ScertifApi.1665267848.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="ScertifApi" t="IncludeRecursive">
+        <e p="Controllers" t="Include">
+          <e p="CommentsController.cs" t="Include" />
+          <e p="ExamsController.cs" t="Include" />
+          <e p="UsersController.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="AuthenticateModel.cs" t="Include" />
+          <e p="CommentModel.cs" t="Include" />
+          <e p="ExamModel.cs" t="Include" />
+          <e p="RegisterModel.cs" t="Include" />
+          <e p="UserModel.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="ScertifApi.csproj" t="IncludeRecursive" />
+        <e p="Services" t="Include">
+          <e p="CommentService.cs" t="Include" />
+          <e p="ExamService.cs" t="Include" />
+          <e p="ICommentService.cs" t="Include" />
+          <e p="IExamService.cs" t="Include" />
+          <e p="IUserService.cs" t="Include" />
+          <e p="UserService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="WeatherForecast.cs" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="ScertifApi.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="test.js" t="Include" />
+        <e p="utils" t="Include">
+          <e p="Authentication.cs" t="Include" />
+        </e>
+      </e>
+      <e p="ScertifApi.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
