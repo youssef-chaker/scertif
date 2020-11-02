@@ -78,6 +78,13 @@ namespace ScertifApi.Controllers
         //     if (user is null) return BadRequest(new {message="user does not exist"});
         //     return new ObjectResult(model);
         // }
-        
+
+        [HttpGet("validate")]
+        [Authorize]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
+        public IActionResult valid() {
+            return Ok();
+        }
     }
 }
