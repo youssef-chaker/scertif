@@ -1,10 +1,14 @@
-<div class="container">
+<div class="text-center" *ngIf="loading" style="height: 25em">
+  <div class="spinner-border" role="status" style="margin-top: 10em; width: 5em; height: 5em;">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="container" *ngIf="!loading">
   <app-question *ngFor="let question of questions | paginate: { itemsPerPage: 1, currentPage: p }"
                 [id]="question.id"
-                [title]="question.title"
-                [body]="question.body"
+                [question]="question.question"
                 [choices]="question.choices"
-                [correctAnswer]="question.correctAnswer"
+                [correctAnswers]="question.correctAnswers"
                 [explanation]="question.explanation"
                 [pChanged]="pHasChanged"
                 [submitted]="submitted"
@@ -15,7 +19,7 @@
   </app-question>
   <div class="row">
     <div class="col-sm ext-col-sm">
-      <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position"></pagination-controls>
+      <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position my-pagination"></pagination-controls>
     </div>
     <div class="col-sm ext-col-sm">
       <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="setTimer()" *ngIf="!showTimer && examStarted">Set timer</button>

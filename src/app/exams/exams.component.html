@@ -1,0 +1,11 @@
+<div class="container">
+  <div id="title" class="col-xs-12 text-center">
+    <h1 style="margin-top: 2.5em;">Available Exams</h1>
+  </div>
+  <div class="row">
+    <app-single-exam *ngFor="let exam of exams"
+                     [provider]="exam.provider"
+                     [exams]="exam.exams"
+                     class="col-sm-4"></app-single-exam>
+  </div>
+</div>

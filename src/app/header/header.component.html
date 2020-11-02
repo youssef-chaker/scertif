@@ -1,9 +1,10 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-2" style="background: black">
   <a class="my-0 mr-md-auto text-white" routerLink="">SCERTIF</a>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-white" href="#">LOGIN</a>
-    <a class="p-2 text-white" href="#">SIGN UP</a>
-    <a class="p-2 text-white" href="#">CERTIFICATION</a>
+    <a class="p-2 text-white" routerLink="/sign-in" *ngIf="!connected">LOGIN</a>
+    <a class="p-2 text-white" routerLink="/sign-up" *ngIf="!connected">SIGN UP</a>
+    <a class="p-2 text-white" *ngIf="connected" (click)="onLogout()">LOGOUT</a>
+    <a class="p-2 text-white" routerLink="/exam">CERTIFICATION</a>
     <a class="p-2 text-white" href="#">FAQ</a>
   </nav>
   <label style="margin-bottom: 0; margin-right: 7px;">

@@ -9,11 +9,10 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 export class QuestionComponent implements OnInit {
 
   @Input() id;
-  @Input() title;
-  @Input() body;
+  @Input() question;
   @Input() explanation;
   @Input() choices;
-  @Input() correctAnswer;
+  @Input() correctAnswers;
   @Input() pChanged;
   @Input() pageNumber;
   @Input() checkedAnswers;
@@ -74,7 +73,7 @@ export class QuestionComponent implements OnInit {
   }
 
   isCorrect(choice): boolean {
-    return this.correctAnswer.find(c => c === choice);
+    return this.correctAnswers.find(c => c === choice);
   }
 
 }

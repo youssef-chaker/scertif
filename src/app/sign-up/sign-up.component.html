@@ -1,0 +1,57 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 text-center">
+      <h4><strong>Sign Up</strong></h4>
+      <span id="auth-msg">Already have an account? <a routerLink="../sign-in" style="color: #0056b3">Sign In</a></span>
+      <form [formGroup]="userForm" (ngSubmit)="onSignUp()">
+        <div class="row centered form-group">
+          <div class="col-xs-8 center-block"><br>
+            <label for="username"></label><input class="form-control input-box" id="username" type="text" placeholder="Username" formControlName="username">
+            <div *ngIf="submitted && f.username.errors" class="field-error">
+              <div *ngIf="f.username.errors.required">Username is required.</div>
+            </div>
+            <div *ngIf="submitted && usernameExist" class="field-error">Username already taken.</div>
+          </div>
+        </div>
+        <div class="row centered form-group">
+          <div class="col-xs-8 center-block">
+            <label for="email"></label><input class="form-control input-box" id="email" type="email" placeholder="Email" formControlName="email">
+            <div *ngIf="submitted && f.email.errors" class="field-error">
+              <div *ngIf="f.email.errors.required">Email is required.</div>
+              <div *ngIf="f.email.errors.email">Please insert a valid email.</div>
+            </div>
+            <div *ngIf="submitted && emailExist" class="field-error">Email already used.</div>
+          </div>
+        </div>
+        <div class="row centered form-group">
+          <div class="col-xs-8 center-block">
+            <label for="password"></label><input class="form-control input-box" id="password" type="password" placeholder="Password" formControlName="password">
+            <div *ngIf="submitted && f.password.errors" class="field-error">
+              <div *ngIf="f.password.errors.required">Password is required.</div>
+              <div *ngIf="f.password.errors.minlength">Password should be at least 8 characters long.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row centered form-group">
+          <div class="col-xs-8 center-block">
+            <label for="conf-password"></label><input class="form-control input-box" id="conf-password" type="password" placeholder="Confirm Password" formControlName="confPassword">
+            <div *ngIf="submitted && f.password.errors" class="field-error">
+              <div *ngIf="f.password.errors.required">Confirm password is required.</div>
+            </div>
+            <div *ngIf="submitted && differentPassword" class="field-error">Different passwords.</div>
+          </div>
+        </div>
+        <div class="row centered form-group" style="line-height:75px;">
+          <div class="col-xs-8 center-block">
+            <button type="submit" class="btn btn-dark btn-sm form-control input-box"><span style="font-size: 17px;">Sign Up</span></button>
+          </div>
+        </div>
+        <app-loading *ngIf="loading"></app-loading>
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<br><br>

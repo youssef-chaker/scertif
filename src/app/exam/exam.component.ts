@@ -1,23 +1,27 @@
-import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ExamService} from '../services/exam.service';
 import {ActivatedRoute} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
+import {SubSink} from 'subsink';
 
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.css']
 })
-export class ExamComponent implements OnInit {
+export class ExamComponent implements OnInit, OnDestroy {
 
-  questions;
+  subSink = new SubSink();
+  questions = [];
   p;
   correctPoints = 0;
   points = [];
   result = 0;
   pHasChanged = new EventEmitter();
+  loading = true;
   submitted = new BehaviorSubject(false);
+  redone = false;
   showResult = false;
   showSubmit = true;
   showTimer = false;
@@ -31,12 +35,19 @@ export class ExamComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const exam = this.route.snapshot.params.exam;
-    /*this.examService.getQuestions(exam)
+    // const exam = this.route.snapshot.params.exam;
+    this.subSink.sink = this.examService.getQuestions('MS-900')
       .subscribe(questions => {
-        this.questions = questions;
-      });*/
-    this.questions = this.examService.getDumpQuestions();
+          this.questions = questions;
+        }, () => {
+          this.questions = this.examService.getDumpQuestions();
+          this.loading = false;
+        }
+        , () => this.loading = false);
+  }
+
+  ngOnDestroy(): void {
+    this.subSink.unsubscribe();
   }
 
   pageChanged(e): void {
@@ -45,6 +56,10 @@ export class ExamComponent implements OnInit {
   }
 
   addAnswer(answers, id): void {
+    if (this.redone) {
+      this.redone = false;
+      return;
+    }
     const point = {id, answers};
     if (this.points.find(p => p.id === id)) {
       this.points[this.points.findIndex(p => p.id === id)] = point;
@@ -65,7 +80,7 @@ export class ExamComponent implements OnInit {
     this.points.forEach(p => {
       let questionAnswers = this.questions.find(q => q.id === p.id);
       if (questionAnswers) {
-        questionAnswers = questionAnswers.correctAnswer.sort();
+        questionAnswers = questionAnswers.correctAnswers.sort();
         const sortedPointAnswers = p.answers.sort();
         const pointAnswers = [];
         sortedPointAnswers.forEach(answer => pointAnswers.push(answer.a));
@@ -89,6 +104,7 @@ export class ExamComponent implements OnInit {
   }
 
   onRedo(): void {
+    this.redone = !this.redone;
     this.showSubmit = !this.showSubmit;
     this.examStarted = !this.examStarted;
     this.p = 1;
@@ -105,7 +121,9 @@ export class ExamComponent implements OnInit {
     this.showTimer = false;
     this.timerMinutes = undefined;
     this.startedTimer = false;
-    this.countdown.stop();
+    if (this.countdown !== undefined) {
+      this.countdown.stop();
+    }
   }
 
   startTimer(): void {

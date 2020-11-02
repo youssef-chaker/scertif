@@ -1,21 +1,12 @@
 <div style="width: 100%;">
   <div class="card" style="overflow: hidden;">
     <div class="ellipse-style">
-      <div class="question-title-style">{{body}}</div>
+      <div class="question-title-style">{{question}}</div>
     </div>
     <div class="question-num-style">{{pageNumber}}</div>
     <div class="card-body" style="margin-top: 2.2em;">
-      <!--<h5 class="card-title">{{title}}</h5>-->
-      <!--<h6 class="card-subtitle mb-2 text-muted">{{title}}</h6>-->
-
       <div id="choices-container">
-        <div *ngFor="let choice of choices; let i = index"
-             [ngClass]="{
-             'form-check choice-input-style-selected': checkChoice(i + 1),
-             'form-check choice-input-style': !checkChoice(i + 1),
-             'form-check choice-input-style-correct': isCorrect(choice) && submit,
-             'form-check choice-input-style-wrong': !isCorrect(choice) && submit
-             }">
+        <div *ngFor="let choice of choices; let i = index" class="form-check choice-input-style">
           <!--<span></span>-->
           <div>
             <label class="input-label">
@@ -27,8 +18,9 @@
                      [disabled]="submit">
             </label>
             <label [ngClass]="{
-             'text-input-style-selected': checkChoice(i + 1) || submit,
-             'text-input-style': !checkChoice(i + 1)
+             'text-input-style': !submit,
+             'text-input-style-correct': isCorrect(choice) && submit,
+             'text-input-style-wrong': !isCorrect(choice) && submit
              }">
               {{choice}}
             </label>
@@ -38,7 +30,7 @@
       <div class="row ext-row">
         <div class="col ext-col">
           <button type="button" class="card-link btn btn-outline-primary ext-btn" (click)="showAnswer = !showAnswer">Show answer</button>
-          <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswer}}</span>
+          <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswers}}</span>
         </div>
         <div class="col ext-col">
           <button type="button" class="card-link btn btn-outline-dark ext-btn" (click)="showExplanation = !showExplanation">&nbsp;&nbsp;Explanation&nbsp;</button>
