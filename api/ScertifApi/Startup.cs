@@ -69,6 +69,8 @@ namespace ScertifApi
 
             app.UseHttpsRedirection();
 
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseAuthentication();
 
             app.UseRouting();

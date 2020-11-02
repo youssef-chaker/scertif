@@ -5194,11 +5194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/youssefc/brrrrr/test-quiz/api/ScertifApi/ScertifApi.csproj",
+      "projectUniqueName": "/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/ScertifApi.csproj",
       "projectName": "ScertifApi",
-      "projectPath": "/home/youssefc/brrrrr/test-quiz/api/ScertifApi/ScertifApi.csproj",
+      "projectPath": "/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/ScertifApi.csproj",
       "packagesPath": "/home/youssefc/.nuget/packages/",
-      "outputPath": "/home/youssefc/brrrrr/test-quiz/api/ScertifApi/obj/",
+      "outputPath": "/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/youssefc/.nuget/NuGet/NuGet.Config"
@@ -5258,7 +5258,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.107/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.108/RuntimeIdentifierGraph.json"
       }
     }
   }
