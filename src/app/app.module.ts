@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ExamModule } from './modules/exam.module';
@@ -17,6 +17,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { ExamsComponent } from './exams/exams.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SingleExamComponent } from './single-exam/single-exam.component';
+import {RequestCacheService} from './services/request-cache.service';
+import {CachingInterceptor} from './services/caching-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,13 @@ import { SingleExamComponent } from './single-exam/single-exam.component';
     ExamModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    RequestCacheService,
+    [
+      {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+    ]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

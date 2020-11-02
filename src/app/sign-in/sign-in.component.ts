@@ -35,9 +35,13 @@ export class SignInComponent implements OnInit {
     const formSignInValue = this.userForm.value;
     const usernameOrEmail = formSignInValue.usernameOrEmail;
     const password = formSignInValue.password;
-    /* this.authService.login(usernameOrEmail, password)
+    this.authService.login(usernameOrEmail, password)
       .subscribe(
         res => {
+          if (res.message === 'incorrect password' || res.message === 'user does not exist') {
+            this.incorrectData = true;
+            return;
+          }
           localStorage.setItem('token', res.token);
           this.authService.loggedIn.next(true);
           this.loading = false;
@@ -47,7 +51,7 @@ export class SignInComponent implements OnInit {
           this.incorrectData = true;
           this.loading = false;
         }
-      ); */
+      );
   }
 
 

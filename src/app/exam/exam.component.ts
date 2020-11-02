@@ -35,12 +35,11 @@ export class ExamComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // const exam = this.route.snapshot.params.exam;
-    this.subSink.sink = this.examService.getQuestions('MS-900')
+    const exam = this.route.snapshot.params.exam;
+    this.subSink.sink = this.examService.getQuestions(exam)
       .subscribe(questions => {
           this.questions = questions;
         }, () => {
-          this.questions = this.examService.getDumpQuestions();
           this.loading = false;
         }
         , () => this.loading = false);

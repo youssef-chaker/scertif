@@ -57,7 +57,7 @@ export class SignUpComponent implements OnInit {
     }
     const email = formSignUpValue.email;
     this.loading = true;
-    /* this.authService.register(email, password, username)
+    this.authService.register(email, password, username)
       .subscribe(
         res => {
           localStorage.setItem('token', res.token);
@@ -66,13 +66,13 @@ export class SignUpComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          if (error.error.errorExist === 1)
+          if (error.error.includes('username_1 dup key'))
             this.usernameExist = true;
-          else if (error.error.errorExist === 2)
+          else if (error.error.includes('email_1 dup key'))
             this.emailExist = true;
           this.loading = false;
         }
-      ); */
+      );
     this.incorrectData = true;
   }
 }

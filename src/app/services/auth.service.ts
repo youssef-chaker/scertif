@@ -11,7 +11,7 @@ export class AuthService {
   }
 
   login(usernameoremail, password): Observable<any> {
-    return this.httpClient.post<any>('localhost:port/api/users/authenticate',
+    return this.httpClient.post<any>('https://localhost:5001/api/users/authenticate',
       {
         usernameoremail,
         password
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   register(email, password, username): Observable<any> {
-    return this.httpClient.post<any>('localhost:port/api/users/register',
+    return this.httpClient.post<any>('https://localhost:5001/api/users/register',
       {
         username,
         password,
