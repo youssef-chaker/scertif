@@ -26,7 +26,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FooterComponent,
     SignUpComponent,
     SignInComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

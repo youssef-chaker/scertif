@@ -15,28 +15,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loading;
   constructor(private authService: AuthService,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.subs.add(
       this.authService.loggedIn
         .subscribe(c => this.connected = c)
     );
     this.subs.add(
       this.authService.loading
-        .subscribe(l => {
-          this.loading = l;
-        })
+        .subscribe(l => this.loading = l)
     );
     this.authService.loggedIn.next(!!this.authService.isConnected());
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 
   onLogout(): void {
     this.authService.logOut();
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 
   onCertification(): void {

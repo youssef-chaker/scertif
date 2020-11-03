@@ -12,13 +12,15 @@ import { CountdownModule } from 'ngx-countdown';
 import { SingleExamComponent } from '../single-exam/single-exam.component';
 import { ExamsComponent } from '../exams/exams.component';
 import {RouterModule} from '@angular/router';
+import { ExamFilterPipe } from '../pipes/exam-filter.pipe';
 
 @NgModule({
   declarations: [
     ExamComponent,
     QuestionComponent,
     ExamsComponent,
-    SingleExamComponent
+    SingleExamComponent,
+    ExamFilterPipe
   ],
   imports: [
     NgxPaginationModule,

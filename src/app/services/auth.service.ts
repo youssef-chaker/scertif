@@ -17,7 +17,8 @@ export class AuthService {
       {
         usernameoremail,
         password
-      }).pipe(
+      })
+      .pipe(
         shareReplay()
     );
   }
@@ -28,7 +29,8 @@ export class AuthService {
         username,
         password,
         email
-      }).pipe(
+      })
+      .pipe(
       shareReplay()
     );
   }

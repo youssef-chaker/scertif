@@ -1,5 +1,26 @@
 #title {
   display: flex;
   justify-content: center;
-  height: 15em;
+  height: 10em;
+}
+
+#search-exam {
+  width: 100%;
+}
+
+.form-group-ext {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-style {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+  border: 1px black solid;
+}
+
+.nav-item {
+  background: #d6d8db;
 }
