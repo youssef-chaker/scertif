@@ -3,22 +3,22 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6 text-center">
-      <h4><strong>Sign In</strong></h4>
-      <span id="auth-msg">Don't have an account? <a routerLink="../sign-up" style="color: #0056b3">Sign Up</a></span>
+      <h4 class="h4-auth"><strong>Sign In</strong></h4>
+      <span class="auth-msg">Don't have an account? <a routerLink="../sign-up" style="color: #0056b3">Sign Up</a></span>
       <form [formGroup]="userForm" (ngSubmit)="onSignIn()">
-        <div class="row centered form-group">
-          <div class="col-xs-8 center-block"><br>
-            <label for="username"></label><input class="form-control input-box" id="username" type="text" placeholder="Username or Email" formControlName="usernameOrEmail">
+        <div class="row centered-auth form-group">
+          <div class="col-xs-8"><br>
+            <label for="username"></label><input class="form-control input-box-auth" id="username" type="text" placeholder="Username or Email" formControlName="usernameOrEmail">
           </div>
         </div>
-        <div class="row centered form-group">
-          <div class="col-xs-8 center-block">
-            <label for="password"></label><input class="form-control input-box" id="password" type="password" placeholder="Password" formControlName="password">
+        <div class="row centered-auth form-group">
+          <div class="col-xs-8">
+            <label for="password"></label><input class="form-control input-box-auth" id="password" type="password" placeholder="Password" formControlName="password">
           </div>
         </div>
-        <div class="row centered form-group" style="line-height:75px;">
-          <div class="col-xs-8 center-block">
-            <button type="submit" class="btn btn-dark btn-sm form-control input-box" [disabled]="userForm.invalid"><span style="font-size: 17px;">Sign In</span></button>
+        <div class="row centered-auth form-group" style="line-height:75px;">
+          <div class="col-xs-8">
+            <button type="submit" class="btn btn-dark btn-sm form-control input-box-auth" [disabled]="userForm.invalid"><span style="font-size: 17px;">Sign In</span></button>
             <div class="form-error" *ngIf="incorrectData">Incorrect username or password.</div>
           </div>
         </div>

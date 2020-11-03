@@ -1,17 +1,16 @@
 <div>
-  <div class="card border-dark mb-3 text-center" style="max-width: 18rem; margin: 0 auto;">
+  <div class="card border-dark mb-3 text-center card-style">
     <div class="card-header">{{provider}}</div>
     <div class="card-body text-dark">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle"
+        <button class="btn btn-secondary dropdown-toggle button-style"
                 type="button" id="dropdownMenuButton"
                 data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false"
-                style="max-width: 100%;">
+                aria-expanded="false">
           Select Exam
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu menu-style" aria-labelledby="dropdownMenuButton">
           <a *ngFor="let exam of exams"
              routerLink="{{exam.exam}}"
              class="dropdown-item">

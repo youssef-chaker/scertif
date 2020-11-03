@@ -7,14 +7,12 @@
     <div class="card-body" style="margin-top: 2.2em;">
       <div id="choices-container">
         <div *ngFor="let choice of choices; let i = index" class="form-check choice-input-style">
-          <!--<span></span>-->
           <div>
             <label class="input-label">
               <input class="form-check-input input-checkbox-style"
                      type="checkbox" value="{{choice}}"
                      (change)="onChange($event, i + 1)"
                      [checked]="isChecked(choice)"
-                     (click)="choiceSelected(choice, i + 1)"
                      [disabled]="submit">
             </label>
             <label [ngClass]="{

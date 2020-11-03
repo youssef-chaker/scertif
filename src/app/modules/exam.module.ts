@@ -9,19 +9,26 @@ import { SharedModule } from './shared.module';
 import { ExamRoutingModule } from './exam-routing.module';
 import {FormsModule} from '@angular/forms';
 import { CountdownModule } from 'ngx-countdown';
+import { SingleExamComponent } from '../single-exam/single-exam.component';
+import { ExamsComponent } from '../exams/exams.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     ExamComponent,
-    QuestionComponent
+    QuestionComponent,
+    ExamsComponent,
+    SingleExamComponent
   ],
-    imports: [
-      NgxPaginationModule,
-      SharedModule,
-      ExamRoutingModule,
-      FormsModule,
-      CountdownModule
-    ],
+  imports: [
+    NgxPaginationModule,
+    SharedModule,
+    ExamRoutingModule,
+    FormsModule,
+    CountdownModule,
+    SharedModule,
+    RouterModule
+  ],
   providers: [
     ExamService
   ]

@@ -1,0 +1,14 @@
+.menu-style {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
+.card-style {
+  max-width: 18rem;
+  margin: 0 auto;
+}
+
+.button-style {
+  max-width: 100%;
+}

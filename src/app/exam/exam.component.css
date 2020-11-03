@@ -53,3 +53,9 @@
 .btn-timer {
   margin-right: 0.5em;
 }
+
+.spinner-style {
+  width: 5em;
+  height: 5em;
+  margin-top: 10em;
+}

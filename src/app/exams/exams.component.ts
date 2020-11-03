@@ -1,33 +1,43 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ExamService} from '../services/exam.service';
-import {SubSink} from 'subsink';
+import {Subscription} from 'rxjs';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-exams',
   templateUrl: './exams.component.html',
   styleUrls: ['./exams.component.css']
 })
-export class ExamsComponent implements OnInit, OnDestroy {
+export class ExamsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   exams = [];
-  subSink = new SubSink();
+  subs = new Subscription();
   loading = true;
-  constructor(private examService: ExamService) { }
+  constructor(private examService: ExamService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.subSink.sink = this.examService.getAllExams()
-      .subscribe( exams => {
-        this.exams = exams;
-        this.loading = false;
-        },
-        () => {
-          this.loading = false;
-        }
-      );
+    this.authService.loading.next(true);
+    this.subs.add(
+      this.examService.getAllExams()
+        .subscribe( exams => {
+            this.exams = exams;
+            this.loading = false;
+          },
+          () => {
+            this.loading = false;
+          }
+        )
+    );
   }
 
   ngOnDestroy(): void {
-    this.subSink.unsubscribe();
+    this.authService.loading.next(false);
+    this.subs.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.authService.loading.next(false);
   }
 
 }

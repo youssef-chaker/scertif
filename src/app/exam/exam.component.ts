@@ -1,9 +1,8 @@
 import {Component, EventEmitter, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ExamService} from '../services/exam.service';
 import {ActivatedRoute} from '@angular/router';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
-import {SubSink} from 'subsink';
 
 @Component({
   selector: 'app-exam',
@@ -12,7 +11,7 @@ import {SubSink} from 'subsink';
 })
 export class ExamComponent implements OnInit, OnDestroy {
 
-  subSink = new SubSink();
+  subs = new Subscription();
   questions = [];
   p;
   correctPoints = 0;
@@ -36,17 +35,19 @@ export class ExamComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const exam = this.route.snapshot.params.exam;
-    this.subSink.sink = this.examService.getQuestions(exam)
-      .subscribe(questions => {
-          this.questions = questions;
-        }, () => {
-          this.loading = false;
-        }
-        , () => this.loading = false);
+    this.subs.add(
+      this.examService.getQuestions(exam)
+        .subscribe(questions => {
+            this.questions = questions;
+          }, () => {
+            this.loading = false;
+          }
+          , () => this.loading = false)
+    );
   }
 
   ngOnDestroy(): void {
-    this.subSink.unsubscribe();
+    this.subs.unsubscribe();
   }
 
   pageChanged(e): void {
@@ -57,6 +58,7 @@ export class ExamComponent implements OnInit, OnDestroy {
   addAnswer(answers, id): void {
     if (this.redone) {
       this.redone = false;
+      this.p = 1;
       return;
     }
     const point = {id, answers};

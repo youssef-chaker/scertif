@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnDestroy {
 
+  subs = new Subscription();
   loading = false;
   userForm: FormGroup;
   incorrectData = false;
@@ -19,6 +21,10 @@ export class SignInComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void { this.initForm(); }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
   initForm(): void {
     this.userForm = this.formBuilder.group(
@@ -35,24 +41,25 @@ export class SignInComponent implements OnInit {
     const formSignInValue = this.userForm.value;
     const usernameOrEmail = formSignInValue.usernameOrEmail;
     const password = formSignInValue.password;
-    this.authService.login(usernameOrEmail, password)
-      .subscribe(
-        res => {
-          if (res.message === 'incorrect password' || res.message === 'user does not exist') {
+    this.subs.add(
+      this.authService.login(usernameOrEmail, password)
+        .subscribe(
+          res => {
+            if (res.message === 'incorrect password' || res.message === 'user does not exist') {
+              this.loading = false;
+              this.incorrectData = true;
+              return;
+            }
+            localStorage.setItem('token', res.token);
+            this.authService.loggedIn.next(true);
+            this.router.navigate(['']).then();
+          },
+          () => {
             this.incorrectData = true;
-            return;
+            this.loading = false;
           }
-          localStorage.setItem('token', res.token);
-          this.authService.loggedIn.next(true);
-          this.loading = false;
-          this.router.navigate(['']).then();
-        },
-        () => {
-          this.incorrectData = true;
-          this.loading = false;
-        }
-      );
+        )
+    );
   }
-
 
 }

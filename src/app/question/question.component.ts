@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-question',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./question.component.css']
 })
 
-export class QuestionComponent implements OnInit {
+export class QuestionComponent implements OnInit, OnDestroy {
 
   @Input() id;
   @Input() question;
@@ -18,31 +19,31 @@ export class QuestionComponent implements OnInit {
   @Input() checkedAnswers;
   @Input() submitted;
   @Output() selectedAnswer = new EventEmitter();
+  subs = new Subscription();
   answers = [];
   showAnswer = false;
   showExplanation = false;
   submit = false;
   timerText;
-  nowChecked = [];
-  selectedChoices = [];
   constructor() { }
 
   ngOnInit(): void {
-    this.pChanged.subscribe(c => {
-      if (c) {
-        this.selectedAnswer.emit(this.answers);
-      }
-    });
-    this.submitted.subscribe(s => this.submit = s);
+    this.subs.add(
+      this.pChanged.subscribe(c => {
+        if (c) {
+          this.selectedAnswer.emit(this.answers);
+        }
+      })
+    );
+    this.subs.add(
+      this.submitted.subscribe(s => this.submit = s)
+    );
     this.pageNumber = typeof (this.pageNumber) === 'undefined' ? 1 : this.pageNumber;
     this.answers = this.checkedAnswers;
-    this.styleCheckedAnswers(this.checkedAnswers);
   }
 
-  styleCheckedAnswers(answers): void {
-    answers.forEach(answer => {
-      this.selectedChoices.push(answer);
-    });
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 
   onChange(e, i): void {
@@ -55,21 +56,8 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  choiceSelected(a, i): void {
-    const choice = {a, i};
-    if (this.selectedChoices.find(c => c.a === a)) {
-      this.selectedChoices.splice(this.selectedChoices.findIndex(c => c.i === i), 1);
-    } else {
-      this.selectedChoices.push(choice);
-    }
-  }
-
   isChecked(choice): boolean {
     return this.checkedAnswers.find(c => c.a === choice);
-  }
-
-  checkChoice(i): boolean {
-    return this.selectedChoices.find(c => c.i === i);
   }
 
   isCorrect(choice): boolean {

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {HomeComponent} from '../home/home.component';
 import { AuthService } from '../services/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -11,8 +12,9 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./sign-up.component.css']
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
 
+  subs = new Subscription();
   userForm: FormGroup;
   incorrectData = false;
   loading = false;
@@ -25,9 +27,13 @@ export class SignUpComponent implements OnInit {
               private router: Router,
               private authService: AuthService) { }
 
-  ngOnInit(): void { this.initForm() }
+  ngOnInit(): void { this.initForm(); }
 
-  get f() { return this.userForm.controls }
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
+  get f(): any { return this.userForm.controls; }
 
   initForm(): void {
     this.userForm = this.formBuilder.group(
@@ -40,39 +46,44 @@ export class SignUpComponent implements OnInit {
     );
   }
 
-  onSignUp() {
+  onSignUp(): void {
     this.usernameExist = false;
     this.emailExist = false;
     this.differentPassword = false;
     this.submitted = true;
-    if (this.userForm.invalid)
+    if (this.userForm.invalid) {
       return;
+    }
     const formSignUpValue = this.userForm.value;
     const username = formSignUpValue.username;
     const password = formSignUpValue.password;
     const confPassword = formSignUpValue.confPassword;
-    if (password != confPassword) {
+    if (password !== confPassword) {
       this.differentPassword = true;
       return;
     }
     const email = formSignUpValue.email;
     this.loading = true;
-    this.authService.register(email, password, username)
-      .subscribe(
-        res => {
-          localStorage.setItem('token', res.token);
-          this.authService.loggedIn.next(true);
-          this.router.navigate(['']).then();
-          this.loading = false;
-        },
-        error => {
-          if (error.error.includes('username_1 dup key'))
-            this.usernameExist = true;
-          else if (error.error.includes('email_1 dup key'))
-            this.emailExist = true;
-          this.loading = false;
-        }
-      );
+    this.subs.add(
+      this.authService.register(email, password, username)
+        .subscribe(
+          res => {
+            localStorage.setItem('token', res.token);
+            this.authService.loggedIn.next(true);
+            this.router.navigate(['']).then();
+            this.loading = false;
+          },
+          error => {
+            if (error.error.includes('username_1 dup key')) {
+              this.usernameExist = true;
+            }
+            else if (error.error.includes('email_1 dup key')) {
+              this.emailExist = true;
+            }
+            this.loading = false;
+          }
+        )
+    );
     this.incorrectData = true;
   }
 }

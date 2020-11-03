@@ -4,7 +4,7 @@
     <a class="p-2 text-white" routerLink="/sign-in" *ngIf="!connected">LOGIN</a>
     <a class="p-2 text-white" routerLink="/sign-up" *ngIf="!connected">SIGN UP</a>
     <a class="p-2 text-white" *ngIf="connected" (click)="onLogout()">LOGOUT</a>
-    <a class="p-2 text-white" routerLink="/exam">CERTIFICATION</a>
+    <a class="p-2 text-white" (click)="onCertification()">CERTIFICATION</a>
     <a class="p-2 text-white" href="#">FAQ</a>
   </nav>
   <label style="margin-bottom: 0; margin-right: 7px;">
@@ -12,3 +12,7 @@
   </label>
   <button type="button" class="btn btn-light text-info">Search</button>
 </div>
+<mat-progress-bar
+  *ngIf="loading"
+  color="accent" mode="indeterminate" style="height: 0.3em;">
+</mat-progress-bar>

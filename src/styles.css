@@ -1,2 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.h4-auth {
+  font-family: Arial Black, Gadget, sans-serif;
+  font-weight: 900;
+  color: black;
+}
+
+.centered-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-box-auth {
+  width: 20rem;
+  height: calc(2.5em + .75rem + 2px);
+}
+
+.auth-msg {
+  font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+  font-size: small;
+}
+
+.field-error {
+  color: #ee2761;
+  font-size: 0.9rem;
+  margin: 2rem 0 0.9375rem;
+}
+
+.form-error {
+  color: #ee2761;
+  font-size: 0.8125rem;
+  margin: -0.75rem 0 0.9375rem;
+  max-width: 25rem;
+}
+
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: #f00;
+}
