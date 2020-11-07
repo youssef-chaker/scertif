@@ -52,7 +52,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             }
             localStorage.setItem('token', res.token);
             this.authService.loggedIn.next(true);
-            this.router.navigate(['']).then();
+            this.router.navigate(['/exam']).then();
           },
           () => {
             this.incorrectData = true;

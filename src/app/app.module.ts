@@ -17,6 +17,7 @@ import {RequestCacheService} from './services/request-cache.service';
 import {CachingInterceptor} from './services/caching-interceptor.service';
 import {SharedModule} from './modules/shared.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {HttpRequestInterceptor} from './services/http-request-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     AuthService,
     RequestCacheService,
     [
-      {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+      {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
+      {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
     ]
   ],
   bootstrap: [AppComponent]

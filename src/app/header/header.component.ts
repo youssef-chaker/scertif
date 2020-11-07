@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.authService.loading
         .subscribe(l => this.loading = l)
     );
-    this.authService.loggedIn.next(!!this.authService.isConnected());
   }
 
   ngOnDestroy(): void {
@@ -35,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(): void {
     this.authService.logOut();
+    this.router.navigate(['/sign-in']).then();
   }
 
   onCertification(): void {
@@ -44,5 +44,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/exam']).then();
       }, 500);
     }
+  }
+
+  unAuth(): boolean {
+    return !this.connected && this.connected !== undefined;
   }
 }

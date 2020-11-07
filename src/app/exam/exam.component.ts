@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ExamService} from '../services/exam.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
 
@@ -31,7 +31,8 @@ export class ExamComponent implements OnInit, OnDestroy {
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
 
   constructor(private examService: ExamService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     const exam = this.route.snapshot.params.exam;
@@ -41,6 +42,7 @@ export class ExamComponent implements OnInit, OnDestroy {
             this.questions = questions;
           }, () => {
             this.loading = false;
+            this.router.navigate(['**']).then();
           }
           , () => this.loading = false)
     );

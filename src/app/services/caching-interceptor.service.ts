@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {RequestCacheService} from './request-cache.service';
 import {tap} from 'rxjs/operators';
 
-// const CACHEABLE_URL = '';
+const NOT_CACHEABLE_URL = '/api/users/validate';
 
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {
@@ -31,6 +31,6 @@ export class CachingInterceptor implements HttpInterceptor {
   }
 
   isRequestCacheable(req: HttpRequest<any>): boolean {
-    return (req.method === 'GET');
+    return (req.method === 'GET' && !req.urlWithParams.includes(NOT_CACHEABLE_URL));
   }
 }

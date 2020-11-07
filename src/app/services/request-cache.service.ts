@@ -10,10 +10,7 @@ export class RequestCacheService {
 
   get(req: HttpRequest<any>): HttpResponse<any> | null {
     const cached = this.cache.get(req.urlWithParams);
-    if (!cached) {
-      return null;
-    }
-    return cached.res;
+    return cached ? cached.res : null;
   }
 
   put(req: HttpRequest<any>, res: HttpResponse<any>): void {

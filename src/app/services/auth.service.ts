@@ -40,8 +40,8 @@ export class AuthService {
     this.loggedIn.next(false);
   }
 
-  isConnected(): boolean {
-    return !!localStorage.getItem('token');
+  isConnected(): Observable<any> {
+    return this.httpClient.get('https://localhost:5001/api/users/validate');
   }
 
 }

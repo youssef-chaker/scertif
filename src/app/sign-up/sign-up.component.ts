@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
           res => {
             localStorage.setItem('token', res.token);
             this.authService.loggedIn.next(true);
-            this.router.navigate(['']).then();
+            this.router.navigate(['/exam']).then();
             this.loading = false;
           },
           error => {
