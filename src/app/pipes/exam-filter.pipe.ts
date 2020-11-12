@@ -11,7 +11,7 @@ export class ExamFilterPipe implements PipeTransform {
     }
     searchExam = searchExam.toLocaleLowerCase();
     return exams.filter(e => {
-      return e.toLocaleLowerCase().includes(searchExam);
+      return e.toLocaleLowerCase().startsWith(searchExam);
     });
   }
 
