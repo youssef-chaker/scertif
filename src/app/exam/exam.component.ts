@@ -22,7 +22,6 @@ export class ExamComponent implements OnInit, OnDestroy {
   pHasChanged = new EventEmitter();
   loading = true;
   submitted = new BehaviorSubject(false);
-  redone = false;
   showResult = false;
   showSubmit = true;
   showTimer = false;
@@ -31,6 +30,7 @@ export class ExamComponent implements OnInit, OnDestroy {
   startedTimer = false;
   timerConfig: CountdownConfig;
   closeResult = '';
+  exam;
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
 
   constructor(private examService: ExamService,
@@ -39,9 +39,9 @@ export class ExamComponent implements OnInit, OnDestroy {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    const exam = this.route.snapshot.params.exam;
+    this.exam = this.route.snapshot.params.exam;
     this.subs.add(
-      this.examService.getQuestions(exam)
+      this.examService.getQuestions(this.exam)
         .subscribe(questions => {
             this.questions = questions;
           }, () => {
@@ -62,11 +62,6 @@ export class ExamComponent implements OnInit, OnDestroy {
   }
 
   addAnswer(answers, id): void {
-    if (this.redone) {
-      this.redone = false;
-      this.p = 1;
-      return;
-    }
     const point = {id, answers};
     if (this.points.find(p => p.id === id)) {
       this.points[this.points.findIndex(p => p.id === id)] = point;
@@ -111,13 +106,9 @@ export class ExamComponent implements OnInit, OnDestroy {
   }
 
   onRedo(): void {
-    this.redone = !this.redone;
-    this.showSubmit = !this.showSubmit;
-    this.examStarted = !this.examStarted;
-    this.p = 1;
-    this.points = [];
-    this.submitted.next(false);
-    this.showResult = false;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate(['/exam/' + this.exam])
+    );
   }
 
   setTimer(): void {

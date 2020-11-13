@@ -25,6 +25,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
   showExplanation = false;
   submit = false;
   timerText;
+  explanationText = '';
+  expSubmitted = false;
+  readMore = false;
+  shortQuestion;
   constructor() { }
 
   ngOnInit(): void {
@@ -40,6 +44,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
     );
     this.pageNumber = typeof (this.pageNumber) === 'undefined' ? 1 : this.pageNumber;
     this.answers = this.checkedAnswers;
+    this.shortQuestion = this.question;
+    if (this.question.length > 175) {
+      this.shortQuestion = this.question.slice(0, 150) + '...';
+      this.readMore = true;
+    }
   }
 
   ngOnDestroy(): void {
@@ -64,4 +73,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
     return this.correctAnswers.find(c => c === choice);
   }
 
+  submitExplanation(): void {
+    console.log(this.explanationText);
+    setTimeout(() => {
+      this.expSubmitted = true;
+    }, 500);
+    // this.showExplanation = !this.showExplanation;
+  }
 }

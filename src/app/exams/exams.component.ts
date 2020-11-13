@@ -64,22 +64,31 @@ export class ExamsComponent implements OnInit, OnDestroy, AfterViewInit {
       return [];
     }
     return this.examNames.filter(e => {
-      return e.toLocaleLowerCase().includes(this.searchExam.toLocaleLowerCase());
+      return e.toLocaleLowerCase().startsWith(this.searchExam.toLocaleLowerCase());
     });
   }
 
   onKeyPress($event: KeyboardEvent): void {
-    if ($event.key === 'ArrowDown') {
-      this.currentIndex = this.currentIndex < this.filteredExams().length - 1 ? ++this.currentIndex : this.currentIndex;
-      this.myScrollContainer.nativeElement.scrollTop += 49;
-    } else if ($event.key === 'ArrowUp') {
-      this.currentIndex = this.currentIndex > 0 ? --this.currentIndex : 0;
-      this.myScrollContainer.nativeElement.scrollTop -= 49;
-    } else if ($event.key === 'Enter') {
-      this.router.navigate(['exam/' + this.filteredExams()[this.currentIndex]]).then();
-    } else {
-      this.currentIndex = 0;
-      this.myScrollContainer.nativeElement.scrollTop = 0;
+    switch ($event.key) {
+      case 'ArrowDown': {
+        this.currentIndex = this.currentIndex < this.filteredExams().length - 1 ? ++this.currentIndex : this.currentIndex;
+        this.myScrollContainer.nativeElement.scrollTop += 49;
+        break;
+      }
+      case 'ArrowUp': {
+        this.currentIndex = this.currentIndex > 0 ? --this.currentIndex : 0;
+        this.myScrollContainer.nativeElement.scrollTop -= 49;
+        break;
+      }
+      case 'Enter': {
+        this.router.navigate(['exam/' + this.filteredExams()[this.currentIndex]]).then();
+        break;
+      }
+      default: {
+        this.currentIndex = 0;
+        this.myScrollContainer.nativeElement.scrollTop = 0;
+        break;
+      }
     }
   }
 
