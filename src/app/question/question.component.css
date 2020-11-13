@@ -23,6 +23,7 @@
   font-weight: 600;
   margin-top:0.5em;
   letter-spacing: 0em;
+  overflow: hidden;
 }
 
 .question-num-style {
