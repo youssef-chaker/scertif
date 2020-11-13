@@ -17,10 +17,15 @@
                 (selectedAnswer)="addAnswer($event, question.id)"
                 class="row" style="margin-top:3em;">
   </app-question>
+  <div id="control_buttons_row" class="row">
+    <button id="report_button" type="button" class="card-link btn btn-outline-dark" (click)="showExplanation = !showExplanation">Report</button>
+    <button id="previous_button" type="button" class="card-link btn btn-outline-dark" (click)="showExplanation = !showExplanation">Previous</button>
+    <button id="next_button" type="button" class="card-link btn btn-outline-dark" (click)="pageChanged($event)">Next</button>
+  </div>
   <div class="row">
-    <div class="col-sm ext-col-sm">
+    <!-- <div class="col-sm ext-col-sm">
       <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position my-pagination"></pagination-controls>
-    </div>
+    </div> 
     <div class="col-sm ext-col-sm">
       <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="setTimer()" *ngIf="!showTimer && examStarted">Set timer</button>
       <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="cancelTimer()" *ngIf="showTimer && examStarted && !startedTimer">Cancel timer</button>
@@ -45,5 +50,37 @@
       </div>
     </div>
   </div>
+  -->
   <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{ closeResult }}</pre>

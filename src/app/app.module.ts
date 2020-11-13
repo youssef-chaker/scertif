@@ -18,6 +18,7 @@ import {CachingInterceptor} from './services/caching-interceptor.service';
 import {SharedModule} from './modules/shared.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {HttpRequestInterceptor} from './services/http-request-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {HttpRequestInterceptor} from './services/http-request-interceptor.servic
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgbModule
   ],
   providers: [
     AuthService,

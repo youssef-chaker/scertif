@@ -59,3 +59,25 @@
   height: 5em;
   margin-top: 10em;
 }
+
+#next_button {
+  width: 6em;
+  background-color: #00B260;
+  color:#fff
+}
+#previous_button {
+  width: 6em;
+  background-color: #EE3A18;
+  color:#fff;
+}
+#report_button {
+  width: 6em;
+  background-color: #ffaf1e;
+  color:#fff;
+}
+
+#control_buttons_row{
+  margin-left: 5em;
+  margin-right: 5em;
+  float: right;
+}

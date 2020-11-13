@@ -3,6 +3,8 @@ import {ExamService} from '../services/exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
+import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-exam',
@@ -28,11 +30,13 @@ export class ExamComponent implements OnInit, OnDestroy {
   timerMinutes;
   startedTimer = false;
   timerConfig: CountdownConfig;
+  closeResult = '';
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     const exam = this.route.snapshot.params.exam;
@@ -138,6 +142,24 @@ export class ExamComponent implements OnInit, OnDestroy {
     if (e.action === 'done') {
       this.cancelTimer();
       this.onSubmit();
+    }
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
   }
 
