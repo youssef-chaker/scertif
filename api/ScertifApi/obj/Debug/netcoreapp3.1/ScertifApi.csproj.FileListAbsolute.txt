@@ -109,3 +109,8 @@
 /home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/obj/Debug/netcoreapp3.1/staticwebassets/ScertifApi.StaticWebAssets.xml
 /home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll
 /home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb
+/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/youssefc/gggrrrrrr/test-quiz/api/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.MvcApplicationPartsAssemblyInfo.cs

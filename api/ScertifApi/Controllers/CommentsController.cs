@@ -5,7 +5,9 @@ using ScertifApi.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Security.Claims;
-
+using System.Net.Http;
+using System.Text.Json;
+using System.Text;
 namespace ScertifApi.Controllers
 {
     [Route("/api/[controller]")]
@@ -13,9 +15,11 @@ namespace ScertifApi.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly ICommentService _commentService;
+        private readonly HttpClient _client;
 
-        public CommentsController(ICommentService commentService) {
+        public CommentsController(ICommentService commentService,IHttpClientFactory clientFactory) {
             this._commentService = commentService;
+            this._client = clientFactory.CreateClient("websocket");
         }
 
         [HttpPost]
@@ -29,7 +33,18 @@ namespace ScertifApi.Controllers
                 return BadRequest(ModelState);
             }
             await _commentService.AddComment(comment);
-            return  new ObjectResult(comment);
+            _ = this._client.PostAsync("/notify", 
+                new StringContent(
+                    JsonSerializer.Serialize(
+                        new NotificationModel(
+                        $"user {HttpContext.User.FindFirstValue(ClaimTypes.Name)} commented on {comment.Id}" ,
+                        $"http://localhost:5000/comments/{comment.Exam}/{comment.Question}"
+                    )),
+                    Encoding.UTF8,
+                    "application/json"
+                )
+            );
+            return new ObjectResult(comment);
         }
 
         [HttpDelete("{id}")]

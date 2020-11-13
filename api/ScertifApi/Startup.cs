@@ -40,6 +40,13 @@ namespace ScertifApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IExamService,ExamService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddHttpClient(
+                "websocket",
+                conf => {
+                    conf.BaseAddress = new Uri("http://localhost:8080");
+                }
+            );
+            services.AddSwaggerGen();
 
             services.AddAuthentication(options =>
             {
@@ -49,7 +56,7 @@ namespace ScertifApi
             {
                 jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true ,
+                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.Unicode.GetBytes(Configuration["secretKey"])),
                     ValidateIssuer = false,
                     ValidateAudience = false,
@@ -66,6 +73,12 @@ namespace ScertifApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1");
+            });
 
             app.UseHttpsRedirection();
 

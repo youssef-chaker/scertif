@@ -35,5 +35,15 @@ namespace ScertifApi.Controllers
             return new ObjectResult(await _examService.GetExam(exam));
         }
         
+        // [AllowAnonymous]
+        // [HttpGet("examsonly")]
+        // [ProducesResponseType(200)]
+        // [ProducesResponseType(404)]
+        // public async Task<IActionResult> getExamsOnly() {
+        //     return Ok(
+        //         await _examService.GetExamsOnly()
+        //     );
+        // }
+
     }
 }

@@ -11,7 +11,6 @@ namespace ScertifApi.Services
     public class ExamService : IExamService
     {
         private readonly IMongoCollection<ExamModel> _examsCollection;
-
         public ExamService(IMongoClient client)
         {
             var db = client.GetDatabase("scertif");
@@ -32,7 +31,7 @@ namespace ScertifApi.Services
             //NEW
             // db.exams.aggregate([
             // {$project : {provider:1,exams:{ exam:"$exam",count: {$size :"$questions" }} } },
-            // {$group:{_id:"$provider",exams:{$push:"$exams"}}}
+            // {$group:{_id:"$provider",exams:{$push:"$exams"}}},
             // {$project: {_id:0,provider:"$_id",exams:"$exams"} }
             // ])
 
@@ -48,8 +47,17 @@ namespace ScertifApi.Services
                 .Group<dynamic>(new BsonDocument
                     {{"_id", "$provider"}, {"exams", new BsonDocument {{"$push", "$exams"}}}})
                 .Project<dynamic>(new BsonDocument {{"_id", 0}, {"provider", "$_id"}, {"exams", "$exams"}})
+                .Sort("provider")
                 .ToListAsync();
         }
+
+        // public Task<List<dynamic>> GetExamsOnly() {
+        //     return _examsCollection
+        //     .Find<ExamModel>(Builders<ExamModel>.Filter.Empty)
+        //     .Project<dynamic>( Builders<ExamModel>.Projection.Exclude("_id").Include("provider").Include("exam"))
+        //     .Sort(Builders<ExamModel>.Sort.Ascending("provider").Ascending("exam"))
+        //     .ToListAsync();
+        // }
 
         public Task<ExamModel> GetExam(string exam)
         {
@@ -70,7 +78,5 @@ namespace ScertifApi.Services
                 .Match<ExamModel>(e => e.Name.Equals(exam))
                 .FirstOrDefaultAsync();
         }
-
-
     }
 }
