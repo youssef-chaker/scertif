@@ -15,6 +15,7 @@ Partie frontend du site [Angular](https://angular.io).
 ## Backend Branch
 
 Partie backend du site [.NET](https://dotnet.microsoft.com).
+**api docs : http://localhost:5000/swagger**
 
 ## Assets Branch
 
