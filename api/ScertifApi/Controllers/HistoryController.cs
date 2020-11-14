@@ -10,9 +10,9 @@ namespace ScertifApi.Controllers {
     [ApiController]
     public class HistoryController : ControllerBase {
 
-        private readonly HistoryService _historyService;
+        private readonly IHistoryService _historyService;
 
-        public HistoryController(HistoryService historyService) {
+        public HistoryController(IHistoryService historyService) {
             this._historyService = historyService;
         }
 

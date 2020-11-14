@@ -40,6 +40,7 @@ namespace ScertifApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IExamService,ExamService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IHistoryService, HistoryService>();
             services.AddHttpClient(
                 "websocket",
                 conf => {

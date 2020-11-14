@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ScertifApi.Models
 {
+    [BsonIgnoreExtraElements]   
     public class PassedExamModel
     {
         [BsonId]
@@ -17,8 +18,10 @@ namespace ScertifApi.Models
         [BsonRequired]
         public string ExamId { get; set; }
         [BsonElement("date")]
-        public DateTime Date { get; set; }
+        [BsonIgnore]
+        public BsonDateTime Date { get; set; }
         [BsonRequired]
+        [BsonElement("results")]
         public List<QuestionResultsModel> Results { get; set; }
     }
 }

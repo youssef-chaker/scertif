@@ -26,6 +26,7 @@ namespace ScertifApi.Services {
         }
 
         public async Task addHistory(PassedExamModel passedExamModel) {
+            passedExamModel.Date = BsonDateTime.Create(System.DateTime.Now);
             await _historyCollection.InsertOneAsync(passedExamModel);
         }
     }
