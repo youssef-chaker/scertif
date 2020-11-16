@@ -18,6 +18,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   @Input() pageNumber;
   @Input() checkedAnswers;
   @Input() submitted;
+  @Input() maxSize: number;
   @Output() selectedAnswer = new EventEmitter();
   subs = new Subscription();
   answers = [];

@@ -1,9 +1,6 @@
 /* .my-pagination /deep/ .ngx-pagination .current {
   /* background: red; */
 
-.hide-page-numbers /deep/ .ngx-pagination li:not(.pagination-previous):not(.pagination-next) {
-  /* display: none; */
-}
 
 .pagination-position {
   float: left;
@@ -89,3 +86,25 @@
 .my-pagination /deep/ .ngx-pagination .current {
   background: red;
 }
+
+#results_view{
+  height:20em;
+}
+
+.answers {
+  padding: 0.75em;
+  border-radius: 17px;
+  color: #fff;
+}
+.right_answers{
+  background-color: #00B260;
+}
+#right_answers_score {
+  width: 30em;
+  margin-right: 1em;
+}
+#right_answers_score {
+  
+}
+
+#wrong_answers{}
