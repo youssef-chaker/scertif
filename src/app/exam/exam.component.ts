@@ -15,7 +15,8 @@ export class ExamComponent implements OnInit, OnDestroy {
 
   subs = new Subscription();
   questions = [];
-  p;
+  // p;
+  p=1;
   correctPoints = 0;
   points = [];
   result = 0;
@@ -57,9 +58,16 @@ export class ExamComponent implements OnInit, OnDestroy {
   }
 
   pageChanged(e): void {
-    this.p = e;
-    this.pHasChanged.emit(true);
+    if (e>0) {
+      this.p = e;
+      this.pHasChanged.emit(true);
+      console.log(e);
+    }
   }
+
+  // button_clicked() {
+  //   this.pHasChanged.emit(true);
+  // }
 
   addAnswer(answers, id): void {
     const point = {id, answers};
@@ -103,6 +111,7 @@ export class ExamComponent implements OnInit, OnDestroy {
     this.showSubmit = !this.showSubmit;
     this.examStarted = !this.examStarted;
     this.cancelTimer();
+    console.log("submitted: ",this.submitted);
   }
 
   onRedo(): void {

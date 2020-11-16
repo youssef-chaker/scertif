@@ -54,6 +54,10 @@
   margin-right: 0.5em;
 }
 
+.btn {
+  margin-top:0.5em;
+}
+
 .spinner-style {
   width: 5em;
   height: 5em;
@@ -80,4 +84,8 @@
   margin-left: 5em;
   margin-right: 5em;
   float: right;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: red;
 }
