@@ -3,8 +3,6 @@ import {ExamService} from '../services/exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
-import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
 
 @Component({
   selector: 'app-exam',
@@ -16,7 +14,7 @@ export class ExamComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   questions = [];
   // p;
-  p=1;
+  p = 1;
   correctPoints = 0;
   points = [];
   result = 0;
@@ -36,8 +34,7 @@ export class ExamComponent implements OnInit, OnDestroy {
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute,
-              private router: Router,
-              private modalService: NgbModal) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.exam = this.route.snapshot.params.exam;
@@ -58,7 +55,7 @@ export class ExamComponent implements OnInit, OnDestroy {
   }
 
   pageChanged(e): void {
-    if (e>0) {
+    if (e > 0) {
       this.p = e;
       this.pHasChanged.emit(true);
       console.log(e);
@@ -111,7 +108,7 @@ export class ExamComponent implements OnInit, OnDestroy {
     this.showSubmit = !this.showSubmit;
     this.examStarted = !this.examStarted;
     this.cancelTimer();
-    console.log("submitted: ",this.submitted);
+    console.log('submitted: ', this.submitted);
   }
 
   onRedo(): void {

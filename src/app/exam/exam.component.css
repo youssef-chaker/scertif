@@ -64,7 +64,7 @@
   margin-top: 10em;
 }
 
-#next_button {
+.next_finish_button {
   width: 6em;
   background-color: #00B260;
   color:#fff
@@ -72,11 +72,6 @@
 #previous_button {
   width: 6em;
   background-color: #EE3A18;
-  color:#fff;
-}
-#report_button {
-  width: 6em;
-  background-color: #ffaf1e;
   color:#fff;
 }
 

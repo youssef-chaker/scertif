@@ -11,7 +11,6 @@
   position: absolute;
   font-family: Roboto, sans-serif;
   color: white;
-  font-size: 1em;
   margin-left: auto;
   margin-right: auto;
   top: 0.1em;
@@ -46,6 +45,36 @@
   padding-top: 0.75em;
 }
 
+.choice-input-style-selected {
+  border: 1px solid;
+  border-radius: 0.2em;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: rgb(71,85,212);
+  background: linear-gradient(90deg, rgba(71,85,212,1) 0%, rgba(126,128,162,1) 90%);
+}
+
+.choice-input-style-correct {
+  border: 1px solid;
+  border-radius: 0.2em;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: rgb(0,191,4);
+  background: radial-gradient(circle, rgba(0,191,4,0.7889356426164216) 0%, rgba(23,170,49,1) 80%);
+}
+
+.choice-input-style-wrong {
+  border: 1px solid;
+  border-radius: 0.2em;
+  padding-left: 2em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  background: rgb(255,35,35);
+  background: radial-gradient(circle, rgba(255,35,35,0.7889356426164216) 0%, rgba(209,28,28,1) 80%);
+}
+
 #choices-container {
   margin-right: 5em;
   margin-left: 5em;
@@ -57,6 +86,14 @@
   font-family: 'Roboto', sans-serif;
   margin-bottom: 0.5em;
   margin-left: 0.5em;
+}
+
+.text-input-style-selected {
+  font-size: 1.1em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  color: white;
 }
 
 .text-input-style-correct {
@@ -77,6 +114,75 @@
 
 .input-label {
 
+}
+
+@media only screen and (min-width: 1200px) {
+
+  #report_button {
+    width: 6em;
+    background-color: #ffaf1e;
+    color:#fff;
+    margin-top: 0.5em;
+    position: absolute;
+    float: right;
+    margin-left: 44.7em;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+
+  #report_button {
+    width: 6em;
+    background-color: #ffaf1e;
+    color:#fff;
+    margin-top: 0.5em;
+    position: absolute;
+    float: right;
+    margin-left: 33.5em;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+
+  #report_button {
+    width: 6em;
+    background-color: #ffaf1e;
+    color:#fff;
+    margin-top: 0.5em;
+    position: absolute;
+    float: right;
+    margin-left: 18.5em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  #report_button {
+    width: 6em;
+    background-color: #ffaf1e;
+    color:#fff;
+    margin-top: 0.5em;
+    position: absolute;
+    float: right;
+    margin-left: 7.3em;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  #report_button {
+    width: 6em;
+    background-color: #ffaf1e;
+    color:#fff;
+    margin-top: 0.5em;
+    position: absolute;
+    float: right;
+    margin-left: 1em;
+  }
+
+  .show_answer_ex_style {
+    margin-top: 2em;
+  }
 }
 
 .input-checkbox-style {
