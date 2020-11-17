@@ -16,7 +16,7 @@ export class ExamComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   questions = [];
   // p;
-  p=15;
+  p=1;
   correctPoints = 0;
   points = [];
   result = 0;
@@ -113,7 +113,6 @@ export class ExamComponent implements OnInit, OnDestroy {
     this.examStarted = !this.examStarted;
     this.cancelTimer();
     console.log("submitted: ",this.submitted);
-    console.log("examStarted: ",this.examStarted);
   }
 
   onRedo(): void {
