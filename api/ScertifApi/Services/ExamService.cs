@@ -47,7 +47,6 @@ namespace ScertifApi.Services
                 .Group<dynamic>(new BsonDocument
                     {{"_id", "$provider"}, {"exams", new BsonDocument {{"$push", "$exams"}}}})
                 .Project<dynamic>(new BsonDocument {{"_id", 0}, {"provider", "$_id"}, {"exams", "$exams"}})
-                .Sort("provider")
                 .ToListAsync();
         }
 
