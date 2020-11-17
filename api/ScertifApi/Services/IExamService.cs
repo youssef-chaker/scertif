@@ -11,5 +11,7 @@ namespace ScertifApi.Services
         public Task<ExamModel> GetExam(string exam);
         // public Task<List<dynamic>> GetExamsOnly();
         public Task<List<SearchModel>> searchExam(string search);
+
+        public Task ReportQuestion(ReportModel report);
     }
 }

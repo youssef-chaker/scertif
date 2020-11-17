@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScertifApi.Services;
+using ScertifApi.Models;
 
 namespace ScertifApi.Controllers
 {
@@ -32,7 +33,6 @@ namespace ScertifApi.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> SearchExam(string search)
         {
-            System.Console.WriteLine("**************************************");
             return Ok(await _examService.searchExam(search));
         }
 
@@ -42,8 +42,19 @@ namespace ScertifApi.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetExam(string exam)
         {
-            System.Console.WriteLine("bbbbbbbbbbbbbbbb");
             return new ObjectResult(await _examService.GetExam(exam));
+        }
+
+        [AllowAnonymous]
+        [HttpPost("report")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> report([FromBody]ReportModel reportModel) {
+            if(!ModelState.IsValid) {
+                return BadRequest("unvalid report");
+            }
+            await _examService.ReportQuestion(reportModel);
+            return new ObjectResult(reportModel);
         }
 
 

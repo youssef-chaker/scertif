@@ -6,8 +6,8 @@ namespace ScertifApi.Services
 {
     public interface IUserService
     {
-        public Task<dynamic> CreateUser(UserModel user);
-        public Task<dynamic> Authenticate(AuthenticateModel user);
+        public Task<TokenModel> CreateUser(UserModel user);
+        public Task<TokenModel> Authenticate(AuthenticateModel user);
         public Task<UserModel> GetUser(ObjectId id);
         public Task<bool> PatchUser(ObjectId id);
     }

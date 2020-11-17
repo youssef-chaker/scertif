@@ -24,26 +24,19 @@
   <component name="ChangeListManager">
     <list default="true" id="777d7b6b-85e4-4c33-96ea-8a394eb63ec3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/CommentModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/CommentModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/project.razor.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" afterDir="false" />
@@ -65,13 +58,14 @@
         <option value="$PROJECT_DIR$/ScertifApi/Models/ProviderModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/CommentModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Startup.cs" />
-        <option value="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/ICommentService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/CommentService.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" />
       </list>
     </option>
   </component>
@@ -136,6 +130,9 @@
       <workItem from="1604139579391" duration="425000" />
       <workItem from="1604176799810" duration="34000" />
       <workItem from="1604248173230" duration="3870000" />
+      <workItem from="1605636607018" duration="1000" />
+      <workItem from="1605636688016" duration="371000" />
+      <workItem from="1605637121449" duration="578000" />
     </task>
     <servers />
   </component>
@@ -164,6 +161,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="555" y="198" width="804" height="712" key="#Plugins/0.27.1920.1053@0.27.1920.1053" timestamp="1604248236836" />
+    <state x="555" y="242" width="808" height="632" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605637120001">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="555" y="242" width="808" height="632" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1605637120001" />
     <state x="752" y="247" width="428" height="484" key="FileChooserDialogImpl" timestamp="1604248289880">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

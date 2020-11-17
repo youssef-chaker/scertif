@@ -16,7 +16,7 @@
 // add to each question its unique objectid
 db.exams.find().forEach((e) => {
   e.questions.forEach((q) => {
-    print("*");
+    print(i++);
     db.exams.updateOne(
       { _id: e._id },
       { $set: { "questions.$[el].qid": ObjectId() } },

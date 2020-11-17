@@ -26,27 +26,29 @@ namespace ScertifApi.Services
             _configuration = configuration;
         }
 
-        public async Task<dynamic> CreateUser(UserModel user)
+        public async Task<TokenModel> CreateUser(UserModel user)
         {
             user = Authentication.UserWithHashedPasswordAndSalt(user);
             await _usersCollection.InsertOneAsync(user);
             return GenerateToken(user);
         }
 
-        public async Task<dynamic> Authenticate(AuthenticateModel model)
+        public async Task<TokenModel> Authenticate(AuthenticateModel model)
         {
             var user =  await _usersCollection.Find(u =>
                 u.Email.Equals(model.UsernameOrEmail) || u.Username.Equals(model.UsernameOrEmail)).Limit(1).SingleOrDefaultAsync();
-            if (user is null) return new {message = "user does not exist"};
+            if (user is null) throw new Exception("no credentials received");
             if (Authentication.CheckPassword(model.Password, user.Password, user.Salt))
             {
                 return GenerateToken(user);
+            } else {
+                throw new Exception("incorrect password");
             }
 
-            return new {message = "incorrect password"};
+            
         }
 
-        private dynamic GenerateToken(UserModel user)
+        private TokenModel GenerateToken(UserModel user)
         {
             var claims = new List<Claim>()
             {
@@ -65,11 +67,11 @@ namespace ScertifApi.Services
                 ),
                 new JwtPayload(claims)
             );
-            var output = new
+            var output = new TokenModel
             {
-                username = user.Username,
-                id = user.Id.ToString(),
-                token = new JwtSecurityTokenHandler().WriteToken(token)
+                Username = user.Username,
+                Id = user.Id.ToString(),
+                Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
             return output;
         }

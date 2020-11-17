@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -11,8 +12,10 @@ namespace ScertifApi.Models
         [BsonElement("provider")]
         public string Provider { get; set; }
         [BsonElement("exam")]
+        [BsonRequired]
         public string Name { get; set; }
         [BsonElement("questions")]
-        public dynamic Questions { get; set; }
+        [BsonRequired]
+        public List<QuestionModel> Questions { get; set; }
     }
 }
