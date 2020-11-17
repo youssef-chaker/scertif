@@ -9,19 +9,25 @@
     <div class="question-num-style">{{pageNumber}}</div>
     <div class="card-body" style="margin-top: 2.2em;">
       <div id="choices-container">
-        <div *ngFor="let choice of choices; let i = index" class="form-check choice-input-style">
+        <div *ngFor="let choice of choices; let i = index"
+             [ngClass]="{
+             'form-check choice-input-style-selected': checkChoice(i + 1),
+             'form-check choice-input-style': !checkChoice(i + 1),
+             'form-check choice-input-style-correct': isCorrect(choice) && (submit || showAnswer),
+             'form-check choice-input-style-wrong': !isCorrect(choice) && submit
+             }">
           <div>
             <label class="input-label">
               <input class="form-check-input input-checkbox-style"
                      type="checkbox" value="{{choice}}"
                      (change)="onChange($event, i + 1)"
                      [checked]="isChecked(choice)"
+                     (click)="choiceSelected(choice, i + 1)"
                      [disabled]="submit">
             </label>
             <label [ngClass]="{
-             'text-input-style': !submit,
-             'text-input-style-correct': isCorrect(choice) && submit,
-             'text-input-style-wrong': !isCorrect(choice) && submit
+             'text-input-style-selected': checkChoice(i + 1) || submit,
+             'text-input-style': !checkChoice(i + 1)
              }">
               {{choice}}
             </label>
@@ -29,35 +35,20 @@
         </div><br>
       </div><br>
       <div class="row ext-row">
-        <div class="col ext-col">
-          <button type="button" class="card-link btn btn-outline-primary ext-btn" (click)="showAnswer = !showAnswer">Show answer</button>
-          <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswers}}</span>
+        <div class="col ext-col" *ngIf="!submit">
+          <button type="button" class="card-link btn btn-outline-primary ext-btn show_answer_ex_style" (click)="onAnswer()">{{answerText}}</button>
+          <!-- <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswers}}</span> -->
         </div>
         <div class="col ext-col">
           <a data-toggle="modal" data-target="#ExplanationModal">
-          <button type="button" class="card-link btn btn-outline-dark ext-btn">&nbsp;&nbsp;Explanation&nbsp;</button>
-                </a>
+            <button type="button" class="card-link btn btn-outline-dark ext-btn show_answer_ex_style">&nbsp;&nbsp;Explanation&nbsp;</button>
+          </a>
           <!-- <span class="text-center explanation-style" *ngIf="showExplanation">{{explanation}}</span> -->
-          <div class="form-group" *ngIf="showExplanation"><br>
-            <div *ngIf="!expSubmitted">
-              <label for="explanation">Type your explanation&nbsp;&nbsp;</label>
-              <img src="assets/hint.png" alt="hint" width="20" height="20" data-toggle="tooltip"
-                   data-placement="top"
-                   title="Submit an explanation for this question to help others better understand it. Once your submission is approved, it will be displayed as the official explanation!">
-              <textarea class="form-control" id="explanation" rows="3" [(ngModel)]="explanationText"></textarea><br>
-            </div>
-            <button type="button" class="card-link btn btn-outline-dark ext-btn"
-                    *ngIf="!expSubmitted"
-                    [disabled]="explanationText.length === 0"
-                    (click)="submitExplanation()">&nbsp;&nbsp;Submit&nbsp;</button>
-            <div class="alert alert-success text-center" role="alert" *ngIf="expSubmitted">
-              Explanation has been successfully submitted!
-            </div>
-          </div>
         </div>
       </div><br>
     </div>
   </div>
+  <button id="report_button" type="button" class="card-link btn btn-outline-dark" data-toggle="modal" data-target="#reportModal">Report</button>
 </div>
 
 <div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="questionLabel" aria-hidden="true">
@@ -77,18 +68,63 @@
 </div>
 
 
-<div class="modal fade" id="ExplanationModal" tabindex="-1" aria-labelledby="questionLabel" aria-hidden="true">
+<div class="modal fade" id="ExplanationModal" tabindex="-1" aria-labelledby="explanationLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="questionLabel">Explanation : </h5>
+        <h5 class="modal-title" id="explanationLabel">Explanation : </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        explain here
+        <div class="form-group"><br>
+          <div *ngIf="!expSubmitted">
+            <label for="explanation">Type your explanation&nbsp;&nbsp;</label>
+            <img src="assets/hint.png" alt="hint" width="20" height="20" data-toggle="tooltip"
+                 data-placement="top"
+                 title="Submit an explanation for this question to help others better understand it. Once your submission is approved, it will be displayed as the official explanation!">
+            <textarea class="form-control" id="explanation" rows="3" [(ngModel)]="explanationText"></textarea><br>
+          </div>
+          <button type="button" class="card-link btn btn-outline-dark ext-btn"
+                  *ngIf="!expSubmitted"
+                  [disabled]="explanationText.length === 0"
+                  (click)="submitExplanation()">&nbsp;&nbsp;Submit&nbsp;</button>
+          <div class="alert alert-success text-center" role="alert" *ngIf="expSubmitted">
+            Explanation has been successfully submitted!
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Report Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reportLabel">Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group"><br>
+          <div *ngIf="!repSubmitted">
+            <label for="report">What is the issue?&nbsp;&nbsp;</label>
+            <textarea class="form-control" id="report" rows="3" [(ngModel)]="reportText"></textarea><br>
+          </div>
+          <button type="button" class="card-link btn btn-outline-dark ext-btn"
+                  *ngIf="!repSubmitted"
+                  [disabled]="reportText.length === 0"
+                  (click)="submitReport()">&nbsp;&nbsp;Submit&nbsp;</button>
+          <div class="alert alert-warning text-center" role="alert" *ngIf="repSubmitted">
+            Report has been successfully submitted!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

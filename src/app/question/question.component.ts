@@ -26,10 +26,15 @@ export class QuestionComponent implements OnInit, OnDestroy {
   showExplanation = false;
   submit = false;
   timerText;
+  nowChecked = [];
+  selectedChoices = [];
   explanationText = '';
   expSubmitted = false;
   readMore = false;
+  answerText = 'Show answer';
   shortQuestion;
+  reportText = '';
+  repSubmitted = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -50,10 +55,17 @@ export class QuestionComponent implements OnInit, OnDestroy {
       this.shortQuestion = this.question.slice(0, 150) + '...';
       this.readMore = true;
     }
+    this.styleCheckedAnswers(this.checkedAnswers);
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  styleCheckedAnswers(answers): void {
+    answers.forEach(answer => {
+      this.selectedChoices.push(answer);
+    });
   }
 
   onChange(e, i): void {
@@ -66,8 +78,21 @@ export class QuestionComponent implements OnInit, OnDestroy {
     }
   }
 
+  choiceSelected(a, i): void {
+    const choice = {a, i};
+    if (this.selectedChoices.find(c => c.a === a)) {
+      this.selectedChoices.splice(this.selectedChoices.findIndex(c => c.i === i), 1);
+    } else {
+      this.selectedChoices.push(choice);
+    }
+  }
+
   isChecked(choice): boolean {
     return this.checkedAnswers.find(c => c.a === choice);
+  }
+
+  checkChoice(i): boolean {
+    return this.selectedChoices.find(c => c.i === i);
   }
 
   isCorrect(choice): boolean {
@@ -79,6 +104,17 @@ export class QuestionComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.expSubmitted = true;
     }, 500);
-    // this.showExplanation = !this.showExplanation;
+  }
+
+  onAnswer(): void {
+    this.showAnswer = !this.showAnswer;
+    this.answerText = this.showAnswer ? 'Hide answer' : 'Show answer';
+  }
+
+  submitReport(): void {
+    console.log(this.reportText);
+    setTimeout(() => {
+      this.repSubmitted = true;
+    }, 500);
   }
 }

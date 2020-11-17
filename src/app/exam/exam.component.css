@@ -1,7 +1,3 @@
-/* .my-pagination /deep/ .ngx-pagination .current {
-  /* background: red; */
-
-
 .pagination-position {
   float: left;
   margin-top: 20px;
@@ -61,7 +57,7 @@
   margin-top: 10em;
 }
 
-#next_button {
+.next_finish_button {
   width: 6em;
   background-color: #00B260;
   color:#fff
@@ -71,11 +67,6 @@
   background-color: #EE3A18;
   color:#fff;
 }
-#report_button {
-  width: 6em;
-  background-color: #ffaf1e;
-  color:#fff;
-}
 
 #control_buttons_row{
   margin-left: 5em;
@@ -83,13 +74,6 @@
   float: right;
 }
 
-.my-pagination /deep/ .ngx-pagination .current {
-  background: red;
-}
-
-#results_view{
-  height:20em;
-}
 
 .answers {
   padding: 0.75em;
@@ -99,7 +83,7 @@
 .right_answers{
   background-color: #00B260;
 }
-#right_answers_score {
+.answers_score {
   width: 30em;
   margin-right: 1em;
 }
@@ -107,4 +91,35 @@
   
 }
 
-#wrong_answers{}
+.wrong_answers{
+  background-color: #EE3A18;
+}
+
+.blue_answers {
+  background-color: #36A2EB;
+}
+
+.yellow_answers {
+  background-color: #FFCD56;
+}
+
+.orange_answers {
+  background-color: #FF9F40;
+  margin-bottom: 2em;
+}
+
+#congratulation {
+  /* position:absolute; */
+  color:#03D876;
+  text-align: center;
+  margin:1em auto 1em auto;
+  font-size: 3.5em;
+}
+
+#total_score {
+  color:#00B260;
+  margin-left: 22em;
+  font-size:400;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
