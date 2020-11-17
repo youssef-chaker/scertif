@@ -27,13 +27,26 @@ namespace ScertifApi.Controllers
         }
         
         [AllowAnonymous]
+        [HttpGet("search/{search}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> SearchExam(string search)
+        {
+            System.Console.WriteLine("**************************************");
+            return Ok(await _examService.searchExam(search));
+        }
+
+        [AllowAnonymous]
         [HttpGet("{exam}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetExam(string exam)
         {
+            System.Console.WriteLine("bbbbbbbbbbbbbbbb");
             return new ObjectResult(await _examService.GetExam(exam));
         }
+
+
         
         // [AllowAnonymous]
         // [HttpGet("examsonly")]

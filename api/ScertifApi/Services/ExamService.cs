@@ -77,5 +77,10 @@ namespace ScertifApi.Services
                 .Match<ExamModel>(e => e.Name.Equals(exam))
                 .FirstOrDefaultAsync();
         }
+
+        public Task<List<SearchModel>> searchExam(string search) {
+            System.Console.WriteLine("aaaaaaaaaaaaaaaaaaaaa");
+            return _examsCollection.Find(Builders<ExamModel>.Filter.Text(search)).Project<SearchModel>(Builders<ExamModel>.Projection.Include(e => e.Name)).ToListAsync();
+        }
     }
 }
