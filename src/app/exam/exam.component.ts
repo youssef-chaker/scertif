@@ -34,15 +34,19 @@ export class ExamComponent implements OnInit, OnDestroy {
   closeResult = '';
   exam;
 
-  // Pie
+  // Pie Chart
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
-  public pieChartData: SingleDataSet = [300, 500, 100];
+  public pieChartLabels: Label[] = ['Right', 'Wrong', 'Right Previously Wrong','Wrong Previously Right','Wrong Previously Wrong'];
+  public pieChartData: SingleDataSet = [25, 30, 15,20,80];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
+  public pieChartColors :Array<any> = [
+    { // all colors in order
+      backgroundColor: ['#00B260', '#EE3A18', '#FFCD56','#36A2EB','#FF9F40']
+    }]
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
 
   constructor(private examService: ExamService,
