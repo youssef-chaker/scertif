@@ -25,11 +25,12 @@
     <list default="true" id="777d7b6b-85e4-4c33-96ea-8a394eb63ec3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/PassedExamModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/PassedExamModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/QuestionResultsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/QuestionResultsModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" afterDir="false" />
@@ -37,8 +38,6 @@
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,9 +47,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/714153FB-3DE5-4537-8A59-8AE8F7F7655E/c3/e82d1578/List`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -62,10 +58,11 @@
         <option value="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/ICommentService.cs" />
-        <option value="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/CommentService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" />
       </list>
     </option>
   </component>
@@ -133,6 +130,7 @@
       <workItem from="1605636607018" duration="1000" />
       <workItem from="1605636688016" duration="371000" />
       <workItem from="1605637121449" duration="578000" />
+      <workItem from="1605691700797" duration="323000" />
     </task>
     <servers />
   </component>

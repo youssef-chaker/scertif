@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -83,8 +84,12 @@ namespace ScertifApi.Controllers
         [Authorize]
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
-        public IActionResult valid() {
-            return Ok();
+        public IActionResult Valid() {
+            return Ok(new
+            {
+                id = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier),
+                role = HttpContext.User.FindFirstValue(ClaimTypes.Role)
+            });
         }
     }
 }

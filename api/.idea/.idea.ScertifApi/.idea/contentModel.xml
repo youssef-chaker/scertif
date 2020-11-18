@@ -23,6 +23,7 @@
           <e p="RegisterModel.cs" t="Include" />
           <e p="ReportModel.cs" t="Include" />
           <e p="SearchModel.cs" t="Include" />
+          <e p="TokenModel.cs" t="Include" />
           <e p="UserModel.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />

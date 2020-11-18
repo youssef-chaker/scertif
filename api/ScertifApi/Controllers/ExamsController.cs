@@ -45,6 +45,19 @@ namespace ScertifApi.Controllers
             return new ObjectResult(await _examService.GetExam(exam));
         }
 
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "user": 5fb41f617c0f3e72f61b9ea4,
+        ///        "exam": "5fb41f617c0f3e72f61b9ea4",
+        ///        "question": 5fb41f617c0f3e72f61b9ea4,
+        ///         "message" : "bla bla bla"
+        ///     }
+        ///
+        /// </remarks>
+
         [AllowAnonymous]
         [HttpPost("report")]
         [ProducesResponseType(201)]

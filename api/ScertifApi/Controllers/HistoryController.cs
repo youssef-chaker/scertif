@@ -48,6 +48,12 @@ namespace ScertifApi.Controllers {
         [ProducesResponseType(201)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> addHistory([FromBody] PassedExamModel passedExamModel) {
+            if(!ModelState.IsValid) {
+                return BadRequest("unvalid exam");
+            }
+            if(passedExamModel is null) {
+                return BadRequest("bitch this shit is null !");
+            }
             await _historyService.addHistory(passedExamModel);
             return Ok();
         }

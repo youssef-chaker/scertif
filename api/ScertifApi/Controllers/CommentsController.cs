@@ -51,7 +51,7 @@ namespace ScertifApi.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteComment(string id) {
             CommentModel comment = await _commentService.GetComment(id);
-            if( HttpContext.User.FindFirstValue(ClaimTypes.Role).Equals("user") && !comment.UserId.Equals(id)) {
+            if( HttpContext.User.FindFirstValue(ClaimTypes.Role).Equals("user") && !comment.UserId.Equals(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier))) {
                 return Unauthorized(new { message = "user is not the owner of the comment" });
             }
             await _commentService.DeleteComment(id);
