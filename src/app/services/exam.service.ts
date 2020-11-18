@@ -40,4 +40,8 @@ export class ExamService {
       message
     });
   }
+
+  getSearchedExams(exam): Observable<any[]> {
+    return this.httpClient.get<any[]>('https://localhost:5001/api/exams/search/' + exam);
+  }
 }

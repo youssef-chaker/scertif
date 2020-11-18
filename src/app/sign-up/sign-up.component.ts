@@ -69,7 +69,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
             localStorage.setItem('token', res.token);
             localStorage.setItem('id', res.id);
             this.authService.loggedIn.next(true);
-            this.router.navigate(['/exam']).then();
+            this.router.navigate(['']).then();
             this.loading = false;
           },
           error => {

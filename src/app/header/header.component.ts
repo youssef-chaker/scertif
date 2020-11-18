@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   connected;
   loading;
+  searchText;
   constructor(private authService: AuthService,
               private router: Router) {
   }
@@ -48,5 +49,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   unAuth(): boolean {
     return !this.connected && this.connected !== undefined;
+  }
+
+  onSearch(): void {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigateByUrl('/exam/search/' + this.searchText).then()
+    );
+  }
+
+  validSearch(): boolean {
+    return !(this.searchText === undefined || this.searchText.length === 0);
+  }
+
+  onKeyPress($event: KeyboardEvent): void {
+    if ($event.key === 'Enter' && this.validSearch()) {
+      this.onSearch();
+    }
   }
 }
