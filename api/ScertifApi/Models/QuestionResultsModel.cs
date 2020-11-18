@@ -10,11 +10,13 @@ namespace ScertifApi.Models
         [Required]
         [BsonElement("question")]        
         public string Question { get; set; }
-        [BsonRequired]
         [BsonElement("answers")]      
         public string[] Answers { get; set; }
         [BsonRequired]
-        [BsonElement("correct")]      
+        [BsonElement("correctAnswers")]      
         public string[] CorrectAnswers { get; set; }
-    }
+        [BsonElement("correct")]
+        [Required]
+        public bool Correct { get; set; }
+    } 
 }

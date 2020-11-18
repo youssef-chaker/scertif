@@ -23,20 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="777d7b6b-85e4-4c33-96ea-8a394eb63ec3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Models/PassedExamModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/PassedExamModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Models/QuestionResultsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/QuestionResultsModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/HistoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/HistoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScertifApi/Services/IHistoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Services/IHistoryService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" afterDir="false" />
     </list>
@@ -56,13 +55,18 @@
         <option value="$PROJECT_DIR$/ScertifApi/Startup.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/IExamService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" />
-        <option value="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/ICommentService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Services/CommentService.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" />
-        <option value="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Controllers/UsersController.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Controllers/CommentsController.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Services/ExamService.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Models/PassedExamModel.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Services/IHistoryService.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Services/HistoryService.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Models/QuestionResultsModel.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +134,9 @@
       <workItem from="1605636607018" duration="1000" />
       <workItem from="1605636688016" duration="371000" />
       <workItem from="1605637121449" duration="578000" />
-      <workItem from="1605691700797" duration="323000" />
+      <workItem from="1605691700797" duration="6049000" />
+      <workItem from="1605706104273" duration="1000" />
+      <workItem from="1605706310203" duration="5495000" />
     </task>
     <servers />
   </component>
@@ -167,22 +173,26 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="752" y="247" width="428" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1604248289880" />
-    <state width="1878" height="387" key="GridCell.Tab.0.bottom" timestamp="1604255151393">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1874" height="289" key="GridCell.Tab.0.bottom" timestamp="1605695259369">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="1878" height="387" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1604255151393" />
-    <state width="1878" height="387" key="GridCell.Tab.0.center" timestamp="1604255151392">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1874" height="289" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1605695259369" />
+    <state width="1874" height="289" key="GridCell.Tab.0.center" timestamp="1605695259366">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="1878" height="387" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1604255151392" />
-    <state width="1878" height="387" key="GridCell.Tab.0.left" timestamp="1604255151392">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1874" height="289" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1605695259366" />
+    <state width="1874" height="289" key="GridCell.Tab.0.left" timestamp="1605695259364">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="1878" height="387" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1604255151392" />
-    <state width="1878" height="387" key="GridCell.Tab.0.right" timestamp="1604255151392">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1874" height="289" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1605695259364" />
+    <state width="1874" height="289" key="GridCell.Tab.0.right" timestamp="1605695259367">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="1878" height="387" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1604255151392" />
+    <state width="1874" height="289" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1605695259367" />
     <state width="1878" height="387" key="GridCell.Tab.1.bottom" timestamp="1604255151394">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -259,6 +269,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="96" y="127" width="1728" height="859" key="VCS.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1602964476793" />
+    <state x="594" y="241" width="730" height="639" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605708291118">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="594" y="241" width="730" height="639" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1605708291117" />
     <state x="508" y="275" width="770" height="643" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1604248317316">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

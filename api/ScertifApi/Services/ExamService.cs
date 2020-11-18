@@ -19,7 +19,7 @@ namespace ScertifApi.Services
             _reportsCollection = db.GetCollection<ReportModel>("reports");
         }
 
-        //todo : create DTOs insted of using dynamic
+        //todo : create DTOs instead of using dynamic
         public Task<List<dynamic>> GetExams()
         {
             // db.exams.aggregate([
@@ -28,7 +28,7 @@ namespace ScertifApi.Services
             // {$project: {_id:0,provider:"$_id",exams:"$exams"} }
             // ])
 
-            return _examsCollection.Aggregate<ExamModel>()
+            return _examsCollection.Aggregate()
                 .Project<dynamic>(new BsonDocument
                 {
                     {"provider", 1},
@@ -49,8 +49,8 @@ namespace ScertifApi.Services
             // {$project: {"questions":"$questions"} }
             // ])
             
-            return _examsCollection.Aggregate<ExamModel>()
-                .Match<ExamModel>(e => e.Name.Equals(exam))
+            return _examsCollection.Aggregate()
+                .Match(e => e.Name.Equals(exam))
                 .FirstOrDefaultAsync();
         }
 

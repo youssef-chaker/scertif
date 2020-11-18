@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScertifApi.Services;
 using ScertifApi.Models;
+using System.Linq;
 
 namespace ScertifApi.Controllers {
 
@@ -13,7 +14,7 @@ namespace ScertifApi.Controllers {
         private readonly IHistoryService _historyService;
 
         public HistoryController(IHistoryService historyService) {
-            this._historyService = historyService;
+            _historyService = historyService;
         }
 
         [Authorize(Roles = "admin,moderator")]
@@ -22,7 +23,7 @@ namespace ScertifApi.Controllers {
         [ProducesResponseType(401)]
         public async Task<IActionResult> GetHistory()
         {
-            return Ok(await _historyService.getHistory());
+            return Ok(await _historyService.GetHistory());
         }
 
         [AllowAnonymous]
@@ -31,7 +32,7 @@ namespace ScertifApi.Controllers {
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetHistory(string userId)
         {
-            return Ok(await _historyService.getHistory(userId: userId));
+            return Ok(await _historyService.GetHistory(userId: userId));
         }
 
         [AllowAnonymous]
@@ -40,22 +41,42 @@ namespace ScertifApi.Controllers {
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetHistory(string userId , string examId)
         {
-            return Ok(await _historyService.getHistory(userId:userId , examId : examId));
+            return Ok(await _historyService.GetHistory(userId:userId , examId : examId));
         }
 
         [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(201)]
-        [ProducesResponseType(500)]
-        public async Task<IActionResult> addHistory([FromBody] PassedExamModel passedExamModel) {
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> AddHistory([FromBody] PassedExamModel passedExamModel) {
             if(!ModelState.IsValid) {
-                return BadRequest("unvalid exam");
+                return BadRequest("invalid exam");
             }
             if(passedExamModel is null) {
                 return BadRequest("bitch this shit is null !");
             }
-            await _historyService.addHistory(passedExamModel);
-            return Ok();
+
+            var latestResults = (await _historyService.GetLatestHistory(passedExamModel.UserId, passedExamModel.ExamId))?.Results;
+            await _historyService.AddHistory(passedExamModel);
+            if(latestResults is null) return Ok();
+            int trueFalse = 0,falseFalse = 0,falseTrue = 0;
+            foreach (var question in passedExamModel.Results)
+            {
+                var history = latestResults.FirstOrDefault(q => q.Question.Equals(question.Question));
+                if (history != null)
+                {
+                    if (question.Correct && !history.Correct) trueFalse++;
+                    else if (!question.Correct && !history.Correct ) falseFalse++;
+                    else if (!question.Correct && history.Correct) falseTrue++;
+                } 
+            }
+            return new ObjectResult(new
+            {
+                trueFalse,
+                falseFalse,
+                falseTrue
+            });
+            
         }
 
     }

@@ -18,8 +18,8 @@ namespace ScertifApi.Controllers
         private readonly HttpClient _client;
 
         public CommentsController(ICommentService commentService,IHttpClientFactory clientFactory) {
-            this._commentService = commentService;
-            this._client = clientFactory.CreateClient("websocket");
+            _commentService = commentService;
+            _client = clientFactory.CreateClient("websocket");
         }
 
         [HttpPost]
@@ -33,7 +33,7 @@ namespace ScertifApi.Controllers
                 return BadRequest(ModelState);
             }
             await _commentService.AddComment(comment);
-            _ = this._client.PostAsync("/notify", 
+            _ = _client.PostAsync("/notify", 
                 new StringContent(
                     JsonSerializer.Serialize(
                         new NotificationModel(
@@ -62,7 +62,7 @@ namespace ScertifApi.Controllers
         [Authorize]
         public async Task<IActionResult> UpdateComment(string id , [FromBody] CommentModel comment) {
             CommentModel c = await _commentService.GetComment(id);
-            if(HttpContext.User.FindFirstValue(ClaimTypes.Role).Equals("user") && !c.UserId.Equals(id)) {
+            if(HttpContext.User.FindFirstValue(ClaimTypes.Role).Equals("user") && !c.UserId.Equals(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier))) {
                 return Unauthorized(new { message = "user is not the owner of the comment" });
             }
             await _commentService.UpdateComment(id,comment);

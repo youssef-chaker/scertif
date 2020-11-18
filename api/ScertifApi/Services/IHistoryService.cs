@@ -6,7 +6,8 @@ namespace ScertifApi.Services
 {
     public interface IHistoryService
     {
-        Task<List<PassedExamModel>> getHistory(string userId=null, string examId = null);
-        Task addHistory(PassedExamModel passedExamModel);
+        Task<List<PassedExamModel>> GetHistory(string userId=null, string examId = null);
+        Task AddHistory(PassedExamModel passedExamModel);
+        Task<PassedExamModel> GetLatestHistory(string userId, string examId);
     }
 }

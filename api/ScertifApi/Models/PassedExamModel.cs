@@ -21,7 +21,8 @@ namespace ScertifApi.Models
         [Required]
         public string ExamId { get; set; }
         [BsonElement("date")]
-        public BsonDateTime Date { get; set; }
+        [BsonRepresentation(BsonType.DateTime)]
+        public DateTime Date { get; set; }
         [BsonRequired]
         [BsonElement("results")]
         [Required]
