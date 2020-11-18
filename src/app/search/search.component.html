@@ -6,7 +6,7 @@
   <div class="row" *ngIf="!loading">
     <app-single-search *ngFor="let exam of exams"
                      [exam]="exam.exam"
-                     class="col-sm-4"></app-single-search>
+                     class="col-sm-4 card-style"></app-single-search>
   </div>
   <div class="row justify-content-center" *ngIf="!loading">
     <h2 *ngIf="exams.length === 0">No results...</h2>

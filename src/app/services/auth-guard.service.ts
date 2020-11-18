@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate {
     const connected = this.authService.loggedIn.getValue();
     if (connected !== undefined) {
       if (!connected) {
-        this.router.navigate(['/sign-in']).then();
+        this.router.navigate(['/sign-in'], { queryParams: { redirectUrl: state.url }}).then();
         return false;
       }
       return true;
@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
       this.authService.isConnected()
         .subscribe(() => loggedIn.next(true),
           () => {
-            this.router.navigate(['/sign-in'])
+            this.router.navigate(['/sign-in', { queryParams: { redirectUrl: state.url }}])
               .then(() => loggedIn.next(false));
           });
     });
