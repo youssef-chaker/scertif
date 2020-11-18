@@ -3,6 +3,8 @@ import {ExamService} from '../services/exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {CountdownComponent, CountdownConfig} from 'ngx-countdown';
+import { ChartType, ChartOptions } from 'chart.js';
+import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 
 @Component({
   selector: 'app-exam',
@@ -31,11 +33,24 @@ export class ExamComponent implements OnInit, OnDestroy {
   timerConfig: CountdownConfig;
   closeResult = '';
   exam;
+
+  // Pie
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
+  public pieChartData: SingleDataSet = [300, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+                monkeyPatchChartJsTooltip();
+                monkeyPatchChartJsLegend();
+               }
 
   ngOnInit(): void {
     this.exam = this.route.snapshot.params.exam;

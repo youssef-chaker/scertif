@@ -13,6 +13,8 @@ import { SingleExamComponent } from '../single-exam/single-exam.component';
 import { ExamsComponent } from '../exams/exams.component';
 import {RouterModule} from '@angular/router';
 import { ExamFilterPipe } from '../pipes/exam-filter.pipe';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ExamFilterPipe } from '../pipes/exam-filter.pipe';
     FormsModule,
     CountdownModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    ChartsModule
   ],
   providers: [
     ExamService

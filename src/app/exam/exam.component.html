@@ -22,105 +22,56 @@
     <button type="button" class="card-link btn btn-outline-dark next_finish_button" *ngIf="p !== questions.length" (click)="pageChanged(p+1)">Next</button>
     <button type="button" class="card-link btn btn-outline-dark next_finish_button" *ngIf="p === questions.length" (click)="onSubmit()">Finish</button>
   </div>
-  <div class="row">
-    <!-- <pagination-controls (pageChange)="pageChanged($event)" maxSize="0" class="hide-page-numbers pagination-position my-pagination"></pagination-controls> -->
-    <!-- <div class="col-sm ext-col-sm">
-      <pagination-controls (pageChange)="pageChanged($event)" class="hide-page-numbers pagination-position my-pagination"></pagination-controls>
-    </div>
-    <div class="col-sm ext-col-sm">
-      <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="setTimer()" *ngIf="!showTimer && examStarted">Set timer</button>
-      <button type="button" class="card-link btn btn-outline-info set-cancel-timer-style" (click)="cancelTimer()" *ngIf="showTimer && examStarted && !startedTimer">Cancel timer</button>
-      <div class="input-group" id="timer-input" *ngIf="showTimer">
-        <input type="text" placeholder="min" class="form-control" *ngIf="!startedTimer" [(ngModel)]="timerMinutes" maxlength="3" aria-label="Minute amount">
-        <div class="input-group-append">
-          <button type="button" class="btn btn-info" *ngIf="!startedTimer" (click)="startTimer()" [disabled]="startedTimer || timerMinutes === undefined || timerMinutes.length <= 0">Start</button>
-          <div *ngIf="startedTimer" class="input-group-append">
-            <button type="button" class="btn btn-info btn-timer" (click)="countdown.pause()" [disabled]="!startedTimer">Pause</button>
-            <button type="button" class="btn btn-info btn-timer" (click)="countdown.resume()" [disabled]="!startedTimer">Resume</button>
-            <button type="button" class="btn btn-info btn-timer" (click)="countdown.restart()" [disabled]="!startedTimer">Restart</button>
-            <button type="button" class="btn btn-info btn-timer" (click)="cancelTimer()" [disabled]="!startedTimer">Stop</button>
-          </div>
-        </div>
-      </div>
-      <countdown *ngIf="startedTimer" id="timer-style" #cd [config]="timerConfig" (event)="handleTimer($event)"></countdown>
-    </div>
-    <div class="col-1 ext-col-sm">
-      <div id="finish-redo-style">
-        <button type="button" class="btn btn-primary" *ngIf="p === questions.length && showSubmit" (click)="onSubmit()">Finish</button>
-        <button type="button" class="btn btn-primary" *ngIf="!showSubmit" (click)="onRedo()">Re-do</button>
-      </div>
-    </div>
-  </div>
-  -->
-
-    <!-- <pagination-template #p="paginationApi"
-                       (pageChange)="pageChanged($event)">
-
-          <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
-              <a *ngIf="!p.isFirstPage()" (click)="p.previous()"> < </a>
-          </div>
-
-          <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-              <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-                  <span>{{ page.label }}</span>
-              </a>
-              <div *ngIf="p.getCurrent() === page.value">
-                  <span>{{ page.label }}</span>
-              </div>
-          </div>
-
-          <div class="pagination-next" [class.disabled]="p.isLastPage()">
-              <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
-          </div>
-
-  </pagination-template> -->
-
-
-    <div class="container" *ngIf="!loading && !submitted">
-      hello
-    </div>
-
 
 
     <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 
-  </div>
-
-
 </div>
 
 <div class="container" id="results_view" *ngIf="!loading && !examStarted ">
-  <div>
-    <div class="row">
-      <!-- <div id="congratulation"> -->
-      <h1 id="congratulation">Congratulations ! </h1>
-      <!-- </div> -->
+  <div class="row">
+    <h1 id="congratulation">Congratulations ! </h1>
+  </div>
+  <div class="row">
+    <h1 id="total_score">95/120</h1>
+    <br>
+  </div>
+  <div class="row">
+    <div class="chart split left">
+      <div style="display: block;">
+        <canvas baseChart 
+          [data]="pieChartData" 
+          [labels]="pieChartLabels" 
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div>
     </div>
+    <div class="results split right">
       <div class="row">
-      <h1 id="total_score">95/120</h1>
-      <br>
-    </div>
-    <div class="row">
-      <h3 class="answers answers_score right_answers" id="right_answers_score">Right Answers: 50 / 120</h3><br>
-      <h3 class="answers right_answers" id="right_answers_retake">Retake</h3>
-    </div>
+        <h5 class="answers answers_score right_answers" id="right_answers_score">Right Answers: 50 / 120</h5>
+        <h5 class="answers right_answers" id="right_answers_retake">Retake</h5>
+      </div>
 
-    <div class="row">
-      <h3 class="answers answers_score wrong_answers">Wrong Answers: 50/120</h3>
-      <h3 class="answers wrong_answers">Retake</h3>
-    </div>
+      <div class="row">
+        <h5 class="answers answers_score wrong_answers">Wrong Answers: 50/120</h5>
+        <h5 class="answers wrong_answers">Retake</h5>
+      </div>
 
-    <div class="row">
-      <h3 class="answers answers_score yellow_answers">Right Answers answred Wrongly Previously: 50/120</h3>
-      <h3 class="answers yellow_answers">Retake</h3>
-    </div>
-    <div class="row">
-      <h3 class="answers answers_score blue_answers">Wrong Answers answred correctly Previously: 50/120</h3>
-      <h3 class="answers blue_answers">Retake</h3>
-    </div>
-    <div class="row">
-      <h3 class="answers answers_score orange_answers">Wrong Answers answered wrongly Previously: 50/120</h3>
-      <h3 class="answers orange_answers">Retake</h3>
+      <div class="row">
+        <h5 class="answers answers_score yellow_answers">Right Answers answred Wrongly Previously: 50/120</h5>
+        <h5 class="answers yellow_answers">Retake</h5>
+      </div>
+      <div class="row">
+        <h5 class="answers answers_score blue_answers">Wrong Answers answred correctly Previously: 50/120</h5>
+        <h5 class="answers blue_answers">Retake</h5>
+      </div>
+      <div class="row">
+        <h5 class="answers answers_score orange_answers">Wrong Answers answered wrongly Previously: 50/120</h5>
+        <h5 class="answers orange_answers">Retake</h5>
+      </div>
     </div>
   </div>
   
