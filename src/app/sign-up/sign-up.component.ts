@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {HomeComponent} from '../home/home.component';
 import { AuthService } from '../services/auth.service';
 import {Subscription} from 'rxjs';
 
@@ -69,6 +67,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         .subscribe(
           res => {
             localStorage.setItem('token', res.token);
+            localStorage.setItem('id', res.id);
             this.authService.loggedIn.next(true);
             this.router.navigate(['/exam']).then();
             this.loading = false;

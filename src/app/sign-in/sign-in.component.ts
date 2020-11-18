@@ -51,6 +51,7 @@ export class SignInComponent implements OnInit, OnDestroy {
               return;
             }
             localStorage.setItem('token', res.token);
+            localStorage.setItem('id', res.id);
             this.authService.loggedIn.next(true);
             this.router.navigate(['/exam']).then();
           },

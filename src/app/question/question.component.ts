@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {ExamService} from '../services/exam.service';
 
 @Component({
   selector: 'app-question',
@@ -11,9 +12,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   @Input() id;
   @Input() question;
+  @Input() exam;
   @Input() explanation;
   @Input() choices;
   @Input() correctAnswers;
+  @Input() exhibit;
   @Input() pChanged;
   @Input() pageNumber;
   @Input() checkedAnswers;
@@ -23,7 +26,6 @@ export class QuestionComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   answers = [];
   showAnswer = false;
-  showExplanation = false;
   submit = false;
   timerText;
   nowChecked = [];
@@ -35,7 +37,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   shortQuestion;
   reportText = '';
   repSubmitted = false;
-  constructor() { }
+  constructor(private examService: ExamService) { }
 
   ngOnInit(): void {
     this.subs.add(
@@ -112,9 +114,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   submitReport(): void {
-    console.log(this.reportText);
-    setTimeout(() => {
-      this.repSubmitted = true;
-    }, 500);
+    this.examService
+      .reportQuestion(this.id, this.exam, this.question, localStorage.getItem('id'), this.reportText)
+      .subscribe((res) => {
+          console.log(res);
+          this.repSubmitted = true;
+        },
+        (err) => console.log(err));
   }
 }

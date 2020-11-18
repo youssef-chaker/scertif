@@ -37,6 +37,10 @@
       <div class="row ext-row">
         <div class="col ext-col" *ngIf="!submit">
           <button type="button" class="card-link btn btn-outline-primary ext-btn show_answer_ex_style" (click)="onAnswer()">{{answerText}}</button>
+          <button type="button" class="btn btn-outline-dark ext-btn"
+                  *ngIf="exhibit !== undefined"
+                  data-toggle="modal"
+                  data-target="#exhibitModal">Exhibit</button>
           <!-- <span class="text-center correct-answer-style" *ngIf="showAnswer">{{correctAnswers}}</span> -->
         </div>
         <div class="col ext-col">
@@ -123,6 +127,23 @@
             Report has been successfully submitted!
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Exhibit Modal -->
+<div *ngIf="exhibit !== undefined" class="modal fade" id="exhibitModal" tabindex="-1" aria-labelledby="exhibitLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-ext modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exhibitLabel">Exhibit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-ext">
+        <img src="{{exhibit}}" alt="Exhibit" style="max-width: 1398px;">
       </div>
     </div>
   </div>
