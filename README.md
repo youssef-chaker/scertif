@@ -15,7 +15,24 @@ Partie frontend du site [Angular](https://angular.io).
 ## Backend Branch
 
 Partie backend du site [.NET](https://dotnet.microsoft.com).
+
 **api docs : http://localhost:5000/swagger**
+
+installer redis: 
+
+$ wget https://download.redis.io/releases/redis-6.0.9.tar.gz
+
+$ tar xzf redis-6.0.9.tar.gz
+
+$ cd redis-6.0.9
+
+$ make
+
+run redis :
+
+$ src/redis-server
+
+jme3et windows leya w likom rabi
 
 ## Assets Branch
 
