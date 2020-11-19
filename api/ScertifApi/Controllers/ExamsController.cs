@@ -67,6 +67,10 @@ namespace ScertifApi.Controllers
                 var options = new DistributedCacheEntryOptions();
                 options.SlidingExpiration = TimeSpan.FromMinutes(15);
                 var examModel = await _examService.GetExam(exam);
+                if (examModel is null)
+                {
+                    return NotFound();
+                }
                 _ = _cache.SetStringAsync(exam, JsonSerializer.Serialize(examModel), options);
                 return new ObjectResult(examModel);
             }
