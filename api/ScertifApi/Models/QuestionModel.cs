@@ -7,7 +7,7 @@ namespace ScertifApi.Models
     [BsonIgnoreExtraElements]
     public class QuestionModel
     {
-        [BsonElement("qid")]
+        [BsonElement("_id")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         [BsonElement("question")]

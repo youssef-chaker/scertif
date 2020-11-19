@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ScertifApi.Models
 {
+    [BsonIgnoreExtraElements]
     public class ExamModel
     {
         [BsonId]

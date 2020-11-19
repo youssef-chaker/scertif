@@ -41,6 +41,12 @@ namespace ScertifApi
             services.AddScoped<IExamService,ExamService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IHistoryService, HistoryService>();
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("Redis");
+                options.InstanceName= "scertif_";
+                
+            });
             services.AddHttpClient(
                 "websocket",
                 conf => {

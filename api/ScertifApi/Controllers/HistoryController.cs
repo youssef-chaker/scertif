@@ -44,6 +44,43 @@ namespace ScertifApi.Controllers {
             return Ok(await _historyService.GetHistory(userId:userId , examId : examId));
         }
 
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        /// {
+        ///     "ExamId" : "5f8d98015f561d24267dd00a",
+        ///     "UserId" : "5f9e7f7b3931c850d03596c5",
+        ///     "Results" : [
+        ///     {
+        ///         "Question" : "5fb4e7db0e54dbc533d95eae",
+        ///         "correctAnswers" : ["D"],
+        ///         "Answers" : ["A"],
+        ///        "Correct" : false
+        ///     },
+        ///     {
+        ///         "Question" : "5fb4e7db0e54dbc533d95eaf",
+        ///         "correctAnswers" : ["D"],
+        ///         "Answers" : ["E"],
+        ///         "Correct" : false
+        ///     },
+        ///     {
+        ///         "Question" : "5fb4e7db0e54dbc533d95eb0",
+        ///         "correctAnswers" : ["A","E"],
+        ///         "Answers" : ["B","C"],
+        ///         "Correct" : false
+        ///     },
+        ///     {
+        ///         "Question" : "5fb4e7db0e54dbc533d95eb1",
+        ///         "correctAnswers" : ["B"],
+        ///         "Answers" : ["A"],
+        ///         "Correct" : false
+        ///     }
+        ///     ]
+        /// }
+        ///
+        /// </remarks>
+        
         [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(201)]

@@ -1,8 +1,12 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using ScertifApi.Services;
 using ScertifApi.Models;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace ScertifApi.Controllers
 {
@@ -12,10 +16,12 @@ namespace ScertifApi.Controllers
     public class ExamsController : ControllerBase
     {
         private readonly IExamService _examService ;
+        private readonly IDistributedCache _cache;
         
-        public ExamsController(IExamService examService)
+        public ExamsController(IExamService examService,IDistributedCache cache)
         {
             _examService = examService;
+            _cache = cache;
         }
 
         [AllowAnonymous]
@@ -24,7 +30,17 @@ namespace ScertifApi.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetExams()
         {
-            return new ObjectResult(await _examService.GetExams());
+            string cachedExams = await _cache.GetStringAsync("exams");
+            if (cachedExams is null)
+            {
+                var exams = await _examService.GetExams();
+                var options = new DistributedCacheEntryOptions();
+                options.AbsoluteExpirationRelativeToNow =TimeSpan.FromMinutes(60);
+                _ = _cache.SetStringAsync("exams", JsonSerializer.Serialize(exams),options);
+                return new ObjectResult(exams);
+            }
+            
+            return new ObjectResult(await _cache.GetStringAsync("exams"));
         }
         
         [AllowAnonymous]
@@ -62,7 +78,7 @@ namespace ScertifApi.Controllers
         [HttpPost("report")]
         [ProducesResponseType(201)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> report([FromBody]ReportModel reportModel) {
+        public async Task<IActionResult> Report([FromBody]ReportModel reportModel) {
             if(!ModelState.IsValid) {
                 return BadRequest("unvalid report");
             }
