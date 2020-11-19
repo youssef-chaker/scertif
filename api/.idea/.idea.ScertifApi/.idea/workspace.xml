@@ -25,27 +25,10 @@
     <list default="true" id="777d7b6b-85e4-4c33-96ea-8a394eb63ec3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScertifApi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Controllers/HistoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/ScertifApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/bin/Debug/netcoreapp3.1/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/Debug/netcoreapp3.1/ScertifApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/ScertifApi.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ScertifApi/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,8 +57,8 @@
         <option value="$PROJECT_DIR$/ScertifApi/Models/QuestionModel.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Startup.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/appsettings.json" />
-        <option value="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" />
         <option value="$PROJECT_DIR$/ScertifApi/Models/ExamModel.cs" />
+        <option value="$PROJECT_DIR$/ScertifApi/Controllers/ExamsController.cs" />
       </list>
     </option>
   </component>
@@ -146,7 +129,7 @@
       <workItem from="1605691700797" duration="6049000" />
       <workItem from="1605706104273" duration="1000" />
       <workItem from="1605706310203" duration="7344000" />
-      <workItem from="1605773991183" duration="3838000" />
+      <workItem from="1605773991183" duration="4618000" />
     </task>
     <servers />
   </component>

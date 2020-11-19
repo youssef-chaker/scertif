@@ -35,12 +35,14 @@ namespace ScertifApi.Controllers
             {
                 var exams = await _examService.GetExams();
                 var options = new DistributedCacheEntryOptions();
-                options.AbsoluteExpirationRelativeToNow =TimeSpan.FromMinutes(60);
+                options.SlidingExpiration =TimeSpan.FromMinutes(45);
                 _ = _cache.SetStringAsync("exams", JsonSerializer.Serialize(exams),options);
+                Console.WriteLine("====>gettings exams from database");
                 return new ObjectResult(exams);
             }
-            
-            return new ObjectResult(await _cache.GetStringAsync("exams"));
+
+            Console.WriteLine("====>getting exams from cache");
+            return new ObjectResult(cachedExams);
         }
         
         [AllowAnonymous]
@@ -58,7 +60,18 @@ namespace ScertifApi.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetExam(string exam)
         {
-            return new ObjectResult(await _examService.GetExam(exam));
+            string cachedExam = await _cache.GetStringAsync(exam);
+            if (cachedExam is null)
+            {
+                Console.WriteLine($"====>getting exam {exam} from database");
+                var options = new DistributedCacheEntryOptions();
+                options.SlidingExpiration = TimeSpan.FromMinutes(15);
+                var examModel = await _examService.GetExam(exam);
+                _ = _cache.SetStringAsync(exam, JsonSerializer.Serialize(examModel), options);
+                return new ObjectResult(examModel);
+            }
+            Console.WriteLine($"====>getting exam {exam} from cache");
+            return new ObjectResult(cachedExam);
         }
 
         /// <remarks>
