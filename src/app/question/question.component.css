@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: 550;
   margin-top:0.5em;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   overflow: hidden;
 }
 
@@ -114,6 +114,18 @@
 
 .input-label {
 
+}
+
+.modal-dialog-ext {
+  max-width: 1400px;
+  margin: 30px auto;
+}
+
+.modal-body-ext {
+  position:relative;
+  padding:0;
+  min-height:400px;
+  background:#ccc;
 }
 
 @media only screen and (min-width: 1200px) {

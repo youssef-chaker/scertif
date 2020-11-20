@@ -14,7 +14,8 @@ import { ExamsComponent } from '../exams/exams.component';
 import {RouterModule} from '@angular/router';
 import { ExamFilterPipe } from '../pipes/exam-filter.pipe';
 import { ChartsModule } from 'ng2-charts';
-
+import { SearchComponent } from '../search/search.component';
+import { SingleSearchComponent } from '../single-search/single-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { ChartsModule } from 'ng2-charts';
     QuestionComponent,
     ExamsComponent,
     SingleExamComponent,
-    ExamFilterPipe
+    ExamFilterPipe,
+    SearchComponent,
+    SingleSearchComponent
   ],
   imports: [
     NgxPaginationModule,

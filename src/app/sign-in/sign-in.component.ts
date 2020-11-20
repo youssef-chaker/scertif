@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
 
@@ -15,12 +15,17 @@ export class SignInComponent implements OnInit, OnDestroy {
   loading = false;
   userForm: FormGroup;
   incorrectData = false;
+  redirectUrl;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private authService: AuthService) { }
 
-  ngOnInit(): void { this.initForm(); }
+  ngOnInit(): void {
+    this.initForm();
+    this.redirectUrl = this.route.snapshot.queryParams.redirectUrl || '/';
+  }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -51,8 +56,9 @@ export class SignInComponent implements OnInit, OnDestroy {
               return;
             }
             localStorage.setItem('token', res.token);
+            localStorage.setItem('id', res.id);
             this.authService.loggedIn.next(true);
-            this.router.navigate(['/exam']).then();
+            this.router.navigateByUrl(this.redirectUrl).then();
           },
           () => {
             this.incorrectData = true;

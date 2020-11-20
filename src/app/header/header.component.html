@@ -9,10 +9,16 @@
     <a class="p-2" routerLink="/sign-up" *ngIf="unAuth()">SIGN UP</a>
     <a class="p-2" *ngIf="connected" (click)="onLogout()">LOGOUT</a>
   </nav>
-  <!-- <label style="margin-bottom: 0; margin-right: 7px;">
-    <input type="text" class="form-control" placeholder="Search">
-  </label> -->
-  <!-- <button type="button" class="btn btn-light text-info">Search</button> -->
+  <label style="margin-bottom: 0; margin-right: 7px;">
+    <input type="text" class="form-control" placeholder="Search"
+           [(ngModel)]="searchText"
+           (keyup)="onKeyPress($event)">
+  </label>
+  <button type="button" class="btn btn-light text-info"
+          (click)="onSearch()"
+          [disabled]="!validSearch()">
+    Search
+  </button>
 </div>
 <mat-progress-bar
   *ngIf="loading"

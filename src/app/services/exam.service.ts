@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Exam} from '../models/exam.model';
 import {map, shareReplay} from 'rxjs/operators';
-
 
 @Injectable()
 export class ExamService {
@@ -31,5 +29,19 @@ export class ExamService {
       .pipe(
         shareReplay()
       );
+  }
+
+  reportQuestion(id, exam, question, user, message): Observable<any> {
+    return this.httpClient.post('https://localhost:5001/api/exams/report', {
+      id,
+      exam,
+      question,
+      user,
+      message
+    });
+  }
+
+  getSearchedExams(exam): Observable<any[]> {
+    return this.httpClient.get<any[]>('https://localhost:5001/api/exams/search/' + exam);
   }
 }
