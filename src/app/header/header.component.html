@@ -1,16 +1,18 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-2" style="background: black">
-  <a class="my-0 mr-md-auto text-white" routerLink="">SCERTIF</a>
+<div class="d-flex flex-column flex-md-row align-items-center p-2" style="margin: 0 2em;">
+  
+  <a class="my-0 mr-md-auto" id="app_name" routerLink=""><img id="logo_image" src="assets/Logo.png">SCERTIF</a>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-white" routerLink="/sign-in" *ngIf="unAuth()">LOGIN</a>
-    <a class="p-2 text-white" routerLink="/sign-up" *ngIf="unAuth()">SIGN UP</a>
-    <a class="p-2 text-white" *ngIf="connected" (click)="onLogout()">LOGOUT</a>
-    <a class="p-2 text-white" (click)="onCertification()">CERTIFICATION</a>
-    <a class="p-2 text-white" href="#">FAQ</a>
+   
+    <a class="p-2" routerLink="/" *ngIf="unAuth()">HOME</a>
+    <a class="p-2" href="/exam" (click)="onCertification()">EXAMS</a>
+    <a class="p-2" routerLink="/sign-in" *ngIf="unAuth()">LOGIN</a>
+    <a class="p-2" routerLink="/sign-up" *ngIf="unAuth()">SIGN UP</a>
+    <a class="p-2" *ngIf="connected" (click)="onLogout()">LOGOUT</a>
   </nav>
-  <label style="margin-bottom: 0; margin-right: 7px;">
+  <!-- <label style="margin-bottom: 0; margin-right: 7px;">
     <input type="text" class="form-control" placeholder="Search">
-  </label>
-  <button type="button" class="btn btn-light text-info">Search</button>
+  </label> -->
+  <!-- <button type="button" class="btn btn-light text-info">Search</button> -->
 </div>
 <mat-progress-bar
   *ngIf="loading"

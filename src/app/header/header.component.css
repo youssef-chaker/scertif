@@ -1,0 +1,18 @@
+a {
+    color:#000
+}
+
+div nav a {
+    color:#000 !important;
+}
+
+#app_name {
+    font-size: 3em;
+    font-weight: 400;
+    font-family: auto;
+    text-decoration: none;
+}
+
+#logo_image {
+    height:2em;
+}

@@ -18,7 +18,9 @@ import {CachingInterceptor} from './services/caching-interceptor.service';
 import {SharedModule} from './modules/shared.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {HttpRequestInterceptor} from './services/http-request-interceptor.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     SharedModule,
     MatProgressBarModule,
-    NgbModule
+    AngularFullpageModule
+    // NgbModule
   ],
   providers: [
     AuthService,
