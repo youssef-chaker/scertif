@@ -20,6 +20,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {HttpRequestInterceptor} from './services/http-request-interceptor.service';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AngularFullpageModule } from '@fullpage/angular-fullpage';
     FooterComponent,
     SignUpComponent,
     SignInComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    // ChatbotComponent
   ],
   imports: [
     BrowserModule,
