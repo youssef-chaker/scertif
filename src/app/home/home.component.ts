@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -12,21 +12,21 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.config = {
- 
+
       // fullpage options
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
       menu: '#menu',
- 
+
       // fullpage callbacks
       afterResize: () => {
-        console.log("After resize");
+        console.log('After resize');
       },
       afterLoad: (origin, destination, direction) => {
         console.log(origin.index);
       }
     };
   }
- 
+
   getRef(fullPageRef) {
     this.fullpage_api = fullPageRef;
   }

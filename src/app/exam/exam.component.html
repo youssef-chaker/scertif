@@ -1,9 +1,9 @@
-<div class="text-center" *ngIf="loading  && examStarted" style="height: 25em">
+<div class="text-center" *ngIf="loading" style="height: 25em">
   <div class="spinner-border spinner-style" role="status">
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<div class="container" *ngIf="!loading && examStarted">
+<div class="container" *ngIf="!loading">
   <app-question *ngFor="let question of questions | paginate: { itemsPerPage: 1, currentPage: p }"
                 [exam]="exam"
                 [id]="question.id"
@@ -30,55 +30,55 @@
 
 </div>
 
-<div class="container" id="results_view" *ngIf="!loading && !examStarted ">
-  <div class="row">
-    <h1 id="congratulation">Congratulations !</h1>
-  </div>
-  <div class="row">
-    <p id="retake_full_exam"><a href="#">Retake full exam</a><a style="margin-left:1em" href="#">Take new exam</a></p>
-  </div>
-  <div class="row">
-    <h1 id="total_score">95/120</h1>
-    <br>
-  </div>
-  <div style="margin-bottom: 3em;" class="row">
-    <div class="chart split left">
-      <div style="display: block;">
-        <canvas baseChart
-          [data]="pieChartData"
-          [labels]="pieChartLabels"
-          [chartType]="pieChartType"
-          [options]="pieChartOptions"
-          [plugins]="pieChartPlugins"
-          [colors]="pieChartColors"
-          [legend]="pieChartLegend">
-        </canvas>
-      </div>
-    </div>
-    <div class="results split right">
-      <div class="row">
-        <h5 class="answers answers_score right_answers" id="right_answers_score">Right Answers: <h5 class="section_score">50/120</h5></h5>
-        <h5 class="answers right_answers" id="right_answers_retake">Retake</h5>
-      </div>
+<!--<div class="container" id="results_view" *ngIf="!loading && !examStarted ">-->
+<!--  <div class="row">-->
+<!--    <h1 id="congratulation">Congratulations !</h1>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <p id="retake_full_exam"><a href="#">Retake full exam</a><a style="margin-left:1em" href="#">Take new exam</a></p>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <h1 id="total_score">95/120</h1>-->
+<!--    <br>-->
+<!--  </div>-->
+<!--  <div style="margin-bottom: 3em;" class="row">-->
+<!--    <div class="chart split left">-->
+<!--      <div style="display: block;">-->
+<!--        <canvas baseChart-->
+<!--          [data]="pieChartData"-->
+<!--          [labels]="pieChartLabels"-->
+<!--          [chartType]="pieChartType"-->
+<!--          [options]="pieChartOptions"-->
+<!--          [plugins]="pieChartPlugins"-->
+<!--          [colors]="pieChartColors"-->
+<!--          [legend]="pieChartLegend">-->
+<!--        </canvas>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="results split right">-->
+<!--      <div class="row">-->
+<!--        <h5 class="answers answers_score right_answers" id="right_answers_score">Right Answers: <h5 class="section_score">50/120</h5></h5>-->
+<!--        <h5 class="answers right_answers" id="right_answers_retake">Retake</h5>-->
+<!--      </div>-->
 
-      <div class="row">
-        <h5 class="answers answers_score wrong_answers">Wrong Answers:  <h5 class="section_score">50/120</h5></h5>
-        <h5 class="answers wrong_answers">Retake</h5>
-      </div>
+<!--      <div class="row">-->
+<!--        <h5 class="answers answers_score wrong_answers">Wrong Answers:  <h5 class="section_score">50/120</h5></h5>-->
+<!--        <h5 class="answers wrong_answers">Retake</h5>-->
+<!--      </div>-->
 
-      <div class="row">
-        <h5 class="answers answers_score yellow_answers">Right Answers answred Wrongly Previously:  <h5 class="section_score">50/120</h5></h5>
-        <h5 class="answers yellow_answers">Retake</h5>
-      </div>
-      <div class="row">
-        <h5 class="answers answers_score blue_answers">Wrong Answers answred correctly Previously:  <h5 class="section_score">50/120</h5></h5>
-        <h5 class="answers blue_answers">Retake</h5>
-      </div>
-      <div class="row">
-        <h5 class="answers answers_score orange_answers">Wrong Answers answered wrongly Previously:  <h5 class="section_score">50/120</h5></h5>
-        <h5 class="answers orange_answers">Retake</h5>
-      </div>
-    </div>
-  </div>
+<!--      <div class="row">-->
+<!--        <h5 class="answers answers_score yellow_answers">Right Answers answred Wrongly Previously:  <h5 class="section_score">50/120</h5></h5>-->
+<!--        <h5 class="answers yellow_answers">Retake</h5>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <h5 class="answers answers_score blue_answers">Wrong Answers answred correctly Previously:  <h5 class="section_score">50/120</h5></h5>-->
+<!--        <h5 class="answers blue_answers">Retake</h5>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <h5 class="answers answers_score orange_answers">Wrong Answers answered wrongly Previously:  <h5 class="section_score">50/120</h5></h5>-->
+<!--        <h5 class="answers orange_answers">Retake</h5>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-</div>
+<!--</div>-->
