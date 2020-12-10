@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {ChatSocketService} from '../services/chat-socket.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loading;
   searchText;
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private chatSocketService: ChatSocketService) {
   }
 
   ngOnInit(): void {
@@ -35,10 +37,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(): void {
     this.authService.logOut();
+    this.chatSocketService.logOut();
     this.router.navigate(['/sign-in']).then();
   }
 
-  onCertification(): void {
+  onExams(): void {
     if (this.router.url !== '/exam') {
       this.authService.loading.next(!this.loading);
       setTimeout(() => {

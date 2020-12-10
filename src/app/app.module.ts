@@ -18,10 +18,15 @@ import {CachingInterceptor} from './services/caching-interceptor.service';
 import {SharedModule} from './modules/shared.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {HttpRequestInterceptor} from './services/http-request-interceptor.service';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
-import { ChatbotComponent } from './chatbot/chatbot.component';
-
+import { ChatComponent } from './chat/chat.component';
+import {DateAgoPipe} from './pipes/date-ago.pipe';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrModule} from 'ngx-toastr';
+import {ChatService} from './services/chat.service';
+import {ChatSocketService} from './services/chat-socket.service';
+import {MentionModule} from 'angular-mentions';
 
 @NgModule({
   declarations: [
@@ -32,18 +37,22 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     SignUpComponent,
     SignInComponent,
     NotFoundComponent,
-    // ChatbotComponent
+    ChatComponent,
+    DateAgoPipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
     MatProgressBarModule,
-    AngularFullpageModule
-    // NgbModule
+    NgbModule,
+    AngularFullpageModule,
+    MentionModule
   ],
   providers: [
     AuthService,
@@ -51,7 +60,9 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     [
       {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
       {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
-    ]
+    ],
+    ChatSocketService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })

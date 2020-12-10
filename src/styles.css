@@ -39,3 +39,7 @@
 .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
   background-color: #f00;
 }
+
+.highlight-mention {
+  color: #64b5f6;
+}

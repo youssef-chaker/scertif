@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import {Subscription} from 'rxjs';
+import {ChatSocketService} from '../services/chat-socket.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private chatSocketService: ChatSocketService) { }
 
   ngOnInit(): void { this.initForm(); }
 
@@ -68,6 +70,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
           res => {
             localStorage.setItem('token', res.token);
             localStorage.setItem('id', res.id);
+            localStorage.setItem('username', res.username);
+            this.chatSocketService.addUser(res.username);
             this.authService.loggedIn.next(true);
             this.router.navigate(['/exam']).then();
             this.loading = false;

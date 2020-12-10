@@ -20,7 +20,7 @@ export class AuthService {
       })
       .pipe(
         shareReplay()
-    );
+      );
   }
 
   register(email, password, username): Observable<any> {
@@ -31,13 +31,14 @@ export class AuthService {
         email
       })
       .pipe(
-      shareReplay()
-    );
+        shareReplay()
+      );
   }
 
   logOut(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
+    localStorage.removeItem('username');
     this.loggedIn.next(false);
   }
 

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
+import {ChatSocketService} from '../services/chat-socket.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +21,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private chatSocketService: ChatSocketService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -57,6 +59,8 @@ export class SignInComponent implements OnInit, OnDestroy {
             }
             localStorage.setItem('token', res.token);
             localStorage.setItem('id', res.id);
+            localStorage.setItem('username', res.username);
+            this.chatSocketService.addUser(res.username);
             this.authService.loggedIn.next(true);
             this.router.navigateByUrl(this.redirectUrl).then();
           },

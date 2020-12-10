@@ -1,0 +1,37 @@
+<app-loading *ngIf="firstLoading"></app-loading>
+<div *ngIf="!firstLoading"
+     class="container">
+  <div #scroller
+       class="row box" (scroll)="onScroll($event)">
+    <app-loading *ngIf="loading"></app-loading>
+    <div *ngFor="let message of messages"
+         class="message-container">
+      <small class="username">{{message.username}}</small>
+      <p class="message" [innerHTML]="highlight(message.message)">{{message.message}}</p>
+      <small class="time">{{message.date | dateAgo}}</small>
+    </div>
+  </div>
+  <div class="send-box">
+    <label for="new-message"></label>
+    <textarea class="form-control"
+              id="new-message"
+              placeholder="Type here..."
+              [(ngModel)]="newMessage"
+              (keydown)="onPressKey($event)"
+              [mention]="mentionedUsers"
+              [mentionConfig]="mentionConfig"></textarea>
+    <button type="button" class="btn btn-success"
+            (click)="onSend()"
+            [disabled]="invalidMessage()">Send
+    </button>
+  </div>
+  <!--  <div *ngIf="mentionMode"-->
+  <!--       class="mentioned-users">-->
+  <!--    <div *ngFor="let user of mentionedUsers; let i = index"-->
+  <!--         class="mentioned-user"-->
+  <!--         [ngClass]="{'nav-item': currentIndex === i}">-->
+  <!--      <div class="green-circle"></div>-->
+  <!--      {{user.username}}-->
+  <!--    </div>-->
+  <!--  </div>-->
+</div>
