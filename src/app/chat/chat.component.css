@@ -76,6 +76,12 @@ textarea::placeholder {
   padding: 1em;
 }
 
+.hint-style {
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: center;
+}
+
 @media only screen and (min-width: 1200px) {
 
   #new-message {

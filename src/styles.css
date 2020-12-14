@@ -43,3 +43,8 @@
 .highlight-mention {
   color: #64b5f6;
 }
+
+.highlight-bot {
+  color: #007fa5;
+  font-weight: 500;
+}

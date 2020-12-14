@@ -176,23 +176,33 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
   }
 
-  highlight(content): void {
+  highlightMention(content): void {
     return content.replace(new RegExp(/@\S+/g, 'gi'), match => {
       return '<span class="highlight-mention">' + match + '</span>';
     });
   }
 
+  highlightBot(content): void {
+    return content.replace(new RegExp('Chatbot', 'gi'), match => {
+      return '<span class="highlight-bot">' + match + '</span>';
+    });
+  }
+
+  sendMessage(username, message, date): void {
+    this.chatSocketService.sendMessage(username, message, date);
+    this.newMessage = undefined;
+  }
+
   onSend(): void {
     if (!this.invalidMessage()) {
-      // if (this.newMessage.startsWith('/bot ')) {
-      //   const message = this.newMessage.substring(5);
-      //   this.chatSocketService.sendMessage(this.myUsername, this.newMessage, new Date());
-      //   this.newMessage = undefined;
-      //   this.chatService.fromChatbot(message).subscribe(msg => {
-      //     this.chatSocketService.sendMessage('chatbot', msg, new Date());
-      //   });
-      //   return;
-      // }
+      if (this.newMessage.startsWith('/bot ')) {
+        const message = this.newMessage.substring(5);
+        this.sendMessage(this.myUsername, this.newMessage, new Date());
+        this.chatService.fromChatbot(message).subscribe(res => {
+          this.sendMessage('Chatbot', res.message, new Date());
+        });
+        return;
+      }
       let tags = this.newMessage.match(/@\S+/g);
       if (tags) {
         tags = tags.map(tag => tag.substring(1));
@@ -204,8 +214,7 @@ export class ChatComponent implements OnInit, OnDestroy {
           });
         });
       }
-      this.chatSocketService.sendMessage(this.myUsername, this.newMessage, new Date());
-      this.newMessage = undefined;
+      this.sendMessage(this.myUsername, this.newMessage, new Date());
     }
   }
 

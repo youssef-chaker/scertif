@@ -6,8 +6,8 @@
     <app-loading *ngIf="loading"></app-loading>
     <div *ngFor="let message of messages"
          class="message-container">
-      <small class="username">{{message.username}}</small>
-      <p class="message" [innerHTML]="highlight(message.message)">{{message.message}}</p>
+      <small class="username" [innerHTML]="highlightBot(message.username)">{{message.username}}</small>
+      <p class="message" [innerHTML]="highlightMention(message.message)">{{message.message}}</p>
       <small class="time">{{message.date | dateAgo}}</small>
     </div>
   </div>
@@ -16,6 +16,9 @@
     <textarea class="form-control"
               id="new-message"
               placeholder="Type here..."
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Tooltip on bottom"
               [(ngModel)]="newMessage"
               (keydown)="onPressKey($event)"
               [mention]="mentionedUsers"
@@ -23,6 +26,13 @@
     <button type="button" class="btn btn-success"
             (click)="onSend()"
             [disabled]="invalidMessage()">Send
+    </button>
+  </div>
+  <div class="alert alert-info alert-dismissible fade show hint-style" role="alert">
+    Start your message with /bot to interact with our <strong>Chatbot!</strong>
+    You can also mention active users by using the @ symbol.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <!--  <div *ngIf="mentionMode"-->
