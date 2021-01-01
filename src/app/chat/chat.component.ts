@@ -199,7 +199,7 @@ export class ChatComponent implements OnInit, OnDestroy {
         const message = this.newMessage.substring(5);
         this.sendMessage(this.myUsername, this.newMessage, new Date());
         this.chatService.fromChatbot(message).subscribe(res => {
-          this.sendMessage('Chatbot', res.message, new Date());
+          this.sendMessage('Chatbot', '@' + this.myUsername + ' ' + res.message, new Date());
         });
         return;
       }

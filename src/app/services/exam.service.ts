@@ -44,4 +44,8 @@ export class ExamService {
   getSearchedExams(exam): Observable<any[]> {
     return this.httpClient.get<any[]>('https://localhost:5001/api/exams/search/' + exam);
   }
+
+  getSimilarExams(exam): Observable<any[]> {
+    return this.httpClient.get<any[]>('http://127.0.0.1:5005/api/similarExams/' + exam);
+  }
 }

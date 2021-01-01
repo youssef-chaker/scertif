@@ -29,6 +29,9 @@
     <br><br><br><br><p class="text-center" *ngIf="showResult">Score = {{result}}%</p>
 
 </div>
+<div *ngIf="!loading">
+  <app-similar-exams [exam]="exam"></app-similar-exams>
+</div>
 
 <!--<div class="container" id="results_view" *ngIf="!loading && !examStarted ">-->
 <!--  <div class="row">-->

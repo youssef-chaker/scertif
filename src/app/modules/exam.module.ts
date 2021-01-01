@@ -16,6 +16,7 @@ import { ExamFilterPipe } from '../pipes/exam-filter.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { SearchComponent } from '../search/search.component';
 import { SingleSearchComponent } from '../single-search/single-search.component';
+import { SimilarExamsComponent } from '../similar-exams/similar-exams.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SingleSearchComponent } from '../single-search/single-search.component'
     SingleExamComponent,
     ExamFilterPipe,
     SearchComponent,
-    SingleSearchComponent
+    SingleSearchComponent,
+    SimilarExamsComponent
   ],
   imports: [
     NgxPaginationModule,
