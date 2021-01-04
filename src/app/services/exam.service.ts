@@ -12,11 +12,13 @@ export class ExamService {
     return this.httpClient.get<any>('https://localhost:5001/api/exams/' + exam)
       .pipe(
         map(ex => {
-          const questions = ex.questions;
-          let id = 0;
+          const questions = ex.Questions ? ex.Questions : ex.questions;
           questions.forEach(q => {
-            q.id = ++id;
-            q.explanation = 'Explanation' + id;
+            if (q.Id) {
+              q.id = q.Id;
+              q.question = q.Question;
+            }
+            q.explanation = 'Explanation';
           });
           return questions;
         }),
